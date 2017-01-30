@@ -34,7 +34,7 @@ class Messenger(object):
 
     def write_prompt(self, channel_id):
         bot_uid = self.clients.bot_user_id()
-        txt = "I'm sorry, I didn't quite understand... Can I help you? (e.g. `<@" + bot_uid + "> help`)"
+        txt = "I'm so sorry, I didn't quite understand... Can I help you? (e.g. `<@" + bot_uid + "> help`)"
         self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
