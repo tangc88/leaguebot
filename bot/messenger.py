@@ -39,6 +39,13 @@ class Messenger(object):
         txt = '{}'.format(random.choice(facts))
         self.send_message(channel_id, txt)
 
+    def write_alternative_fact(self, channel_id):
+        alt_facts = ["Matt only has 9 toes on his feet, his tenth toe is his penis.", "Matt has the ability to suck his own ear.",
+            "Matt invented the sport of penis wrestling, he plays alone.", "Matt was once on the path of going pro in LoL, but diabetes derailed his destiny.",
+            "Before becoming diabetic, Matt has straight hair."]
+        txt = '{}'.format(random.choice(alt_facts))
+        self.send_message(channel_id, txt)
+
     def write_greeting(self, channel_id, user_id):
         greetings = ['Hi', 'Hello', 'Nice to meet you', 'Howdy', 'Salutations']
         txt = '{}, <@{}>!'.format(random.choice(greetings), user_id)
