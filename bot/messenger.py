@@ -2,6 +2,8 @@
 
 import logging
 import random
+import time
+import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +27,12 @@ class Messenger(object):
             "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user. :wave:",
             "> `<@" + bot_uid + "> joke` - I'll tell you one of my finest jokes, with a typing pause for effect. :laughing:",
             "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:")
+        self.send_message(channel_id, txt)
+
+    def write_fact(self, channel_id):
+        facts = ["Matt was physically born a boy and mentally a sandwich.", "Matt has diabetes.", "Matt and Mott are synonyms.",
+            "Matt is " + str(DIFF.days) + " days old!", "Matt is a weird guy, but he is fun."]
+        txt = '{}'.format(random.choice(facts))
         self.send_message(channel_id, txt)
 
     def write_greeting(self, channel_id, user_id):
