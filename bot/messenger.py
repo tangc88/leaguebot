@@ -31,8 +31,8 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_fact(self, channel_id):
-        facts = ["Matt was physically born a boy and mentally a sandwich.", "Matt has diabetes.", "Matt and Mott are synonyms.",
-            "Matt is " + str(DIFF.days) + " days old!", "Matt is a weird guy, but he is fun."]
+        facts = ['Matt was physically born a boy and mentally a sandwich.', 'Matt has diabetes.', 'Matt and Mott are synonyms.',
+            'Matt is ' + str(DIFF.days) + ' days old!', 'Matt is a weird guy, but he is fun.']
         txt = '{}'.format(random.choice(facts))
         self.send_message(channel_id, txt)
 
