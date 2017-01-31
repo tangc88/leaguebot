@@ -22,12 +22,12 @@ class Messenger(object):
 
     def write_help_message(self, channel_id):
         bot_uid = self.clients.bot_user_id()
-        txt = '{}\n{}\n{}\n{}'.format(
+        txt = '{}\n{}\n{}\n{}\n{}'.format(
             "I'm your friendly Slack bot written in Python.  I'll *_respond_* to the following commands:",
             "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user. :wave:",
             "> `<@" + bot_uid + "> joke` - I'll tell you one of my finest jokes, with a typing pause for effect. :laughing:",
-            "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:")
-            #"> '<@" + bot_uid + "> fact' - I'll give you a great fact about Matt! :mottball:"
+            "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:",
+            "> '<@" + bot_uid + "> fact' - I'll give you a great fact about Matt! :mottball:")
         self.send_message(channel_id, txt)
 
     def write_fact(self, channel_id):
