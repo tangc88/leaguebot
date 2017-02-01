@@ -88,10 +88,10 @@ class Messenger(object):
             answer = "Jake has been scripting. :jakepuss:"
         self.send_message(channel_id, answer)
         self.clients.send_user_typing_pause(channel_id)
-        #json_games_jake_champs = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/ranked?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
-        #games_jake_champs = json.load(json_games_jake_champs)
-        riven_losses = games_jake['champions'][12]['stats']['totalSessionsLost']
-        riven_first_blood = games_jake['champions'][12]['stats']['totalFirstBlood']
+        json_games_jake_champs = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/ranked?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
+        games_jake_champs = json.load(json_games_jake_champs)
+        riven_losses = games_jake_champs['champions'][12]['stats']['totalSessionsLost']
+        riven_first_blood = games_jake_champs['champions'][12]['stats']['totalFirstBlood']
         extra_joke = "He has also lost " + str(riven_losses) + " games as Riven. :-1:"
         self.send_message(channel_id, extra_joke)
         self.clients.send_user_typing_pause(channel_id)
