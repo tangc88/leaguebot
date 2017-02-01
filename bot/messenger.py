@@ -39,7 +39,8 @@ class Messenger(object):
         TODAY = datetime.date.today()
         DIFF = TODAY - MATT_BIRTHDAY
         facts = ['Matt was physically born a boy and mentally a sandwich.', 'Matt has diabetes.', 'Matt and Mott are synonyms.',
-            'Matt is ' + str(DIFF.days) + ' days old!', 'Matt is a weird guy, but he is fun.']
+            'Matt is ' + str(DIFF.days) + ' days old!', 'Matt is a weird guy, but he is fun.', 'His blood type is O-Negative.',
+            'He thought "Giraffe" was spelled "Diraffe" until he was 13.']
         txt = '{}'.format(random.choice(facts))
         self.send_message(channel_id, txt)
 
@@ -72,10 +73,15 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
-        question = "Why did the python cross the road?"
+        question = "Jake's ranked win percentage is ..."
         self.send_message(channel_id, question)
         self.clients.send_user_typing_pause(channel_id)
-        answer = "To eat the chicken on the other side! :laughing:"
+        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/summary?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
+        games_jake = json.load(json_games_jake)
+        wins = games_jake['playerStatSummaries'][10]['wins']
+        losses = games_jake['playerStatSummaries'][10]['losses']
+        percentage = ((float(wins) / float(wins + losses)) * 100.0)
+        answer = str(percentage) "% :laughing:"
         self.send_message(channel_id, answer)
 
 
