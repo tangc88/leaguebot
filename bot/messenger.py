@@ -22,13 +22,14 @@ class Messenger(object):
 
     def write_help_message(self, channel_id):
         bot_uid = self.clients.bot_user_id()
-        txt = '{}\n{}\n{}\n{}\n{}\n{}'.format(
+        txt = '{}\n{}\n{}\n{}\n{}\n{}\n{}'.format(
             "I'm your friendly Slack bot written in Python.  I'll *_respond_* to the following commands:",
             "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user. :wave:",
             "> `<@" + bot_uid + "> joke` - I'll tell you one of my finest jokes, with a typing pause for effect. :laughing:",
             "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:",
             "> `<@" + bot_uid + "> fact` - I'll give you a great fact about Matt! :mott:",
-            "> `<@" + bot_uid + "> alternative fact` - I'll give you a great alternative fact about Matt! :mottball:")
+            "> `<@" + bot_uid + "> alternative fact` - I'll give you a great alternative fact about Matt! :mottball:",
+            "> `<@" + bot_uid + "> rank` - I'll give you Matt's sad League ranking. :frowning:")
         self.send_message(channel_id, txt)
 
     def write_fact(self, channel_id):
@@ -56,6 +57,16 @@ class Messenger(object):
         bot_uid = self.clients.bot_user_id()
         txt = "I'm so sorry, I didn't quite understand... Can I help you? (e.g. `<@" + bot_uid + "> help`)"
         self.send_message(channel_id, txt)
+
+    def write_rank(self, channel_id):
+        riot = RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76
+        json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/31203597/entry?api_key=' + riot)
+        games = json.load(json_games)
+        tier = games['31203597'][0]['tier']
+        division = games['31203597'][0]['entries'][0]['division']
+        flex_tier = games['31203597'][1]['tier']
+        flex_division = games['31203597'][1]['entries'][0]['division']
+        response = "Solo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
 
     def write_joke(self, channel_id):
         question = "Why did the python cross the road?"
