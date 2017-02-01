@@ -95,7 +95,7 @@ class Messenger(object):
         extra_joke = "He has also lost " + str(riven_losses) + " games as Riven. :-1:"
         self.send_message(channel_id, extra_joke)
         self.clients.send_user_typing_pause(channel_id)
-        extra_joke_two = "Also has " + str(riven_first_blood) + " as Riven. :chart_with_downwards_trend:"
+        extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
         self.send_message(channel_id, extra_joke_two)
 
 
