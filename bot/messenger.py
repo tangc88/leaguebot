@@ -94,9 +94,9 @@ class Messenger(object):
         riven_first_blood = games_jake_champs['champions'][12]['stats']['totalFirstBlood']
         extra_joke = "He has also lost " + str(riven_losses) + " games as Riven. :-1:"
         self.send_message(channel_id, extra_joke)
-        self.clients.send_user_typing_pause(channel_id)
-        extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
-        self.send_message(channel_id, extra_joke_two)
+        #self.clients.send_user_typing_pause(channel_id)
+        #extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
+        #self.send_message(channel_id, extra_joke_two)
 
 
     def write_error(self, channel_id, err_msg):
