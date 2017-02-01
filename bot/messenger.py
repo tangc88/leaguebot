@@ -81,7 +81,11 @@ class Messenger(object):
         wins = games_jake['playerStatSummaries'][10]['wins']
         losses = games_jake['playerStatSummaries'][10]['losses']
         percentage = ((float(wins) / float(wins + losses)) * 100.0)
-        answer = str(percentage) + "% :laughing:"
+        answer = str('0')
+        if percentage < 50.0:
+            answer = str(percentage) + "% :laughing:"
+        else:
+            answer = "Jake has been scripting. :jakepuss:"
         self.send_message(channel_id, answer)
 
 
