@@ -68,7 +68,7 @@ class Messenger(object):
         division = games['31203597'][0]['entries'][0]['division']
         flex_tier = games['31203597'][1]['tier']
         flex_division = games['31203597'][1]['entries'][0]['division']
-        txt = "Solo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
+        txt = "\nSolo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
         self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
