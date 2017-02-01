@@ -73,7 +73,7 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
-        question = "Jake's ranked win percentage is ..."
+        question = "Jake's ranked solo win percentage is ..."
         self.send_message(channel_id, question)
         self.clients.send_user_typing_pause(channel_id)
         json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/summary?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
