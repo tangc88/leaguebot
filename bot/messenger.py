@@ -8,12 +8,12 @@ import json
 import urllib2
 
 logger = logging.getLogger(__name__)
-
+riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
+matt = '31203597'
+jake = '45556126'
 
 class Messenger(object):
-    riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
-    matt = '31203597'
-    jake = '45556126'
+
     def __init__(self, slack_clients):
         self.clients = slack_clients
 
