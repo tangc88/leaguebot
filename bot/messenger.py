@@ -11,6 +11,9 @@ logger = logging.getLogger(__name__)
 
 
 class Messenger(object):
+    riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
+    matt = '31203597'
+    jake = '45556126'
     def __init__(self, slack_clients):
         self.clients = slack_clients
 
@@ -62,8 +65,6 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_rank(self, channel_id):
-        riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
-        matt = '31203597'
         json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + matt + '/entry?api_key=' + riot)
         games = json.load(json_games)
         tier = games['31203597'][0]['tier']
@@ -77,7 +78,7 @@ class Messenger(object):
         question = "Jake's ranked solo win percentage is ..."
         self.send_message(channel_id, question)
         self.clients.send_user_typing_pause(channel_id)
-        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/summary?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
+        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
         games_jake = json.load(json_games_jake)
         wins = games_jake['playerStatSummaries'][10]['wins']
         losses = games_jake['playerStatSummaries'][10]['losses']
@@ -89,7 +90,7 @@ class Messenger(object):
             answer = "Jake has been scripting. :jakepuss:"
         self.send_message(channel_id, answer)
         self.clients.send_user_typing_pause(channel_id)
-        json_games_jake_champs = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/ranked?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
+        json_games_jake_champs = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/ranked?season=SEASON2017&api_key=' + riot)
         games_jake_champs = json.load(json_games_jake_champs)
         riven_losses = games_jake_champs['champions'][12]['stats']['totalSessionsLost']
         riven_first_blood = games_jake_champs['champions'][12]['stats']['totalFirstBlood']
