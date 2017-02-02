@@ -81,8 +81,8 @@ class Messenger(object):
         json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
         games_jake = json.load(json_games_jake)
         wins = games_jake['playerStatSummaries'][10]['wins']
-        losses = games_jake['playerStatSummaries'][10]['losses']
-        percentage = ((float(wins) / float(wins + losses)) * 100.0)
+        losses_games = games_jake['playerStatSummaries'][10]['losses']
+        percentage = ((float(wins) / float(wins + losses_games)) * 100.0)
         #answer = str('0')
         if percentage < 50.0:
             answer = str(percentage) + "% :laughing:"
