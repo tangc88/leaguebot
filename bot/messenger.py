@@ -78,11 +78,10 @@ class Messenger(object):
         question = "Jake's ranked solo win percentage is ..."
         self.send_message(channel_id, question)
         self.clients.send_user_typing_pause(channel_id)
-        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/summary?season=SEASON2017&api_key=RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76')
-        #json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/45556126/summary?season=SEASON2017&api_key=' + riot)
+        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
         games_jake = json.load(json_games_jake)
-        wins = games_jake['playerStatSummaries'][10]['wins']
-        losses_games = games_jake['playerStatSummaries'][10]['losses']
+        wins = games_jake['playerStatSummaries'][9]['wins']
+        losses_games = games_jake['playerStatSummaries'][9]['losses']
         percentage = ((float(wins) / float(wins + losses_games)) * 100.0)
         #answer = str('0')
         if percentage < 50.0:
