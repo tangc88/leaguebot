@@ -80,8 +80,8 @@ class Messenger(object):
         self.clients.send_user_typing_pause(channel_id)
         json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
         games_jake = json.load(json_games_jake)
-        wins = games_jake['playerStatSummaries'][8]['wins']
-        losses = games_jake['playerStatSummaries'][8]['losses']
+        wins = games_jake['playerStatSummaries'][9]['wins']
+        losses = games_jake['playerStatSummaries'][9]['losses']
         percentage = ((float(wins) / float(wins + losses)) * 100.0)
         #answer = str('0')
         if percentage < 50.0:
