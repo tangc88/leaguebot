@@ -46,8 +46,7 @@ class RtmEventHandler(object):
                     self.msg_writer.write_greeting(event['channel'], event['user'])
                 elif 'joke' in msg_txt:
                     self.msg_writer.write_joke(event['channel'])
-                elif 'weather %s' in msg_txt:
-                    zip_code = %s
+                elif 'weather' in msg_txt:
                     self.msg_writer.write_weather(event['channel'], zip_code)
                 elif 'alternative fact' in msg_txt:
                     self.msg_writer.write_alternative_fact(event['channel'])
