@@ -102,7 +102,6 @@ class Messenger(object):
 
     def write_weather(self, channel_id):
         zip_code = input("Enter your zip code: ")
-        self.send_message(channel_id, zip_code)
         json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=AIzaSyCmnhJXBfU_bi32jVCwbfLeSMEQWU-O68Q')
         location = json.load(json_location)
         lat = location['results'][0]['geometry']['location']['lat']
