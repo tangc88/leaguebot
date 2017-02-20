@@ -100,8 +100,8 @@ class Messenger(object):
         #extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
         #self.send_message(channel_id, extra_joke_two)
 
-    def write_weather(self, channel_id):
-        zip_code = input("Enter your zip code: ")
+    def write_weather(self, channel_id, zip_code):
+        #zip_code = input("Enter your zip code: ")
         json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=AIzaSyCmnhJXBfU_bi32jVCwbfLeSMEQWU-O68Q')
         location = json.load(json_location)
         lat = location['results'][0]['geometry']['location']['lat']
