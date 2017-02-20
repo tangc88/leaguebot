@@ -109,7 +109,7 @@ class Messenger(object):
         json_weather = urllib2.urlopen('https://api.darksky.net/forecast/9298a272f3fb8da43fabcfbdb5288f0f/' + str(lat) + ',' + str(lng))
         weather = json.load(json_weather)
         temperature = weather['currently']['temperature']
-        current_temp = "It is currently " + temperature + "degrees fahrenheit."
+        current_temp = "It is currently " + str(temperature) + "degrees fahrenheit."
         self.send_message(channel_id, current_temp)
 
 
