@@ -34,7 +34,8 @@ class Messenger(object):
             "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:",
             "> `<@" + bot_uid + "> fact` - I'll give you a great fact about Matt! :mott:",
             "> `<@" + bot_uid + "> alternative fact` - I'll give you a great alternative fact about Matt! :mottball:",
-            "> `<@" + bot_uid + "> rank` - I'll give you Matt's sad League ranking. :frowning:")
+            "> `<@" + bot_uid + "> rank` - I'll give you Matt's sad League ranking. :frowning:",
+            "> `<@" + bot_uid + "> weather (zip code)` - I'll tell you the current temperature for that zip code! :thermometer:")
         self.send_message(channel_id, txt)
 
     def write_fact(self, channel_id):
