@@ -10,7 +10,8 @@ import urllib2
 logger = logging.getLogger(__name__)
 riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
 matt = '31203597'
-jake = '45556126'
+jake = '
+'
 
 class Messenger(object):
 
@@ -100,6 +101,9 @@ class Messenger(object):
         #extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
         #self.send_message(channel_id, extra_joke_two)
 
+    def write_weather(self, channel_id):
+        json_weather = urllib2.urlopen('https://api.darksky.net/forecast/9298a272f3fb8da43fabcfbdb5288f0f/' + lat + ',' + longitude)
+        weather = json.load(json_weather)
 
     def write_error(self, channel_id, err_msg):
         txt = ":face_with_head_bandage: my maker didn't handle this error very well:\n>```{}```".format(err_msg)
