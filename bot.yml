@@ -12,5 +12,11 @@ config:
     info: This is an secret option
     type: secret
     default: not secret though
+  - name: riot
+    friendly_name: Riot API
+    info: Smurf API Key
+    type: secret
+    default: not secret though
+    global: true
 screenshots:
   - screenshot: resources/screenshot1.png
