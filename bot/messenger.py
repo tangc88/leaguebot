@@ -6,6 +6,7 @@ import time
 import datetime
 import json
 import urllib2
+import os
 
 logger = logging.getLogger(__name__)
 riot = os.environ.get("riot")
