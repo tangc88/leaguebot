@@ -20,9 +20,6 @@ if __name__ == "__main__":
     slack_token = os.getenv("SLACK_TOKEN", "")
     logging.info("token: {}".format(slack_token))
 
-    riot = os.getenv("riot", "")
-    logging.info("riot: {}".format(riot))
-
     if slack_token == "":
         logging.info("SLACK_TOKEN env var not set, expecting token to be provided by Resourcer events")
         slack_token = None
