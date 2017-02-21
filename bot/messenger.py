@@ -6,10 +6,9 @@ import time
 import datetime
 import json
 import urllib2
-import os
 
 logger = logging.getLogger(__name__)
-riot = os.environ.get("riot")
+riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
 matt = '31203597'
 jake = '45556126'
 
@@ -67,7 +66,7 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_rank(self, channel_id):
-        json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + matt + '/entry?api_key=' + str(riot))
+        json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + matt + '/entry?api_key=' + riot)
         games = json.load(json_games)
         tier = games['31203597'][0]['tier']
         division = games['31203597'][0]['entries'][0]['division']
