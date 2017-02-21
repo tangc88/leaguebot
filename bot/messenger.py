@@ -67,7 +67,7 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_rank(self, channel_id):
-        json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + matt + '/entry?api_key=' + riot)
+        json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + matt + '/entry?api_key=' + str(riot))
         games = json.load(json_games)
         tier = games['31203597'][0]['tier']
         division = games['31203597'][0]['entries'][0]['division']
