@@ -9,8 +9,8 @@ import urllib2
 import os
 
 logger = logging.getLogger(__name__)
-#riot = os.environ.get("riot")
-riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
+riot = os.environ.get("riot")
+#riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
 matt = '31203597'
 jake = '45556126'
 
@@ -48,7 +48,9 @@ class Messenger(object):
             'Matt is ' + str(DIFF.days) + ' days old!', 'Matt is a weird guy, but he is fun.', 'His blood type is O-Negative.',
             'He thought "Giraffe" was spelled "Diraffe" until he was 13.']
         txt = '{}'.format(random.choice(facts))
-        self.send_message(channel_id, txt)
+        random = riot
+        #self.send_message(channel_id, txt)
+        self.send_message(channel_id, random)
 
     def write_alternative_fact(self, channel_id):
         alt_facts = ["Matt only has 9 toes on his feet, his tenth toe is his penis.", "Matt has the ability to suck his own ear.",
