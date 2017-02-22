@@ -159,7 +159,7 @@ class Messenger(object):
             if games_matt['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_matt = games_matt['playerStatSummaries'][x]['wins']
                 losses_matt = games_matt['playerStatSummaries'][x]['losses']
-                percentage_matt = ((float(wins_matt) / float(wins_matt + losses_matt)) * 100.0)
+                percentage_matt = "%.2f" % ((float(wins_matt) / float(wins_matt + losses_matt)) * 100.0)
                 kills_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
                 kills_per_game_matt = float(kills_total_matt) / float(wins_matt + losses_matt)
         for x in range(0, len(games_jake['playerStatSummaries'])):
