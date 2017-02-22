@@ -84,7 +84,7 @@ class Messenger(object):
         self.clients.send_user_typing_pause(channel_id)
         json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
         games_jake = json.load(json_games_jake)
-        for x in range(0, 11):
+        for x in range(0, len(games_jake['playerStatSummaries'])):
             if games_jake['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins = games_jake['playerStatSummaries'][x]['wins']
                 losses = games_jake['playerStatSummaries'][x]['losses']
