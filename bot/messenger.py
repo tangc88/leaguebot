@@ -14,6 +14,17 @@ geocode = os.environ.get("geocode")
 dark_sky = os.environ.get("dark_sky")
 matt = '31203597'
 jake = '45556126'
+jerry = '19139825'
+trevor = '26767760'
+dave = '32702702'
+justin = '45496123'
+#currently nick's smurf
+nick = '75821827'
+raf = '532474'
+surat = '30852265'
+shelby = '31118715'
+steve = '530530'
+wes = '47884918'
 
 class Messenger(object):
 
@@ -116,6 +127,98 @@ class Messenger(object):
         #extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
         #self.send_message(channel_id, extra_joke_two)
 
+    def write_leaderboard(self, channel_id):
+        json_matt_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + matt + '/summary?season=SEASON2017&api_key=' + riot)
+        games_matt = json.load(json_matt_games)
+        json_jake_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
+        games_jake = json.load(json_jake_games)
+        json_jerry_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jerry + '/summary?season=SEASON2017&api_key=' + riot)
+        games_jerry = json.load(json_jerry_games)
+        json_trevor_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + trevor + '/summary?season=SEASON2017&api_key=' + riot)
+        games_trevor = json.load(json_trevor_games)
+        json_justin_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + justin + '/summary?season=SEASON2017&api_key=' + riot)
+        games_justin = json.load(json_justin_games)
+        json_raf_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + raf + '/summary?season=SEASON2017&api_key=' + riot)
+        games_raf = json.load(json_jake_games)
+        json_surat_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + surat + '/summary?season=SEASON2017&api_key=' + riot)
+        games_surat = json.load(json_surat_games)
+        json_dave_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + dave + '/summary?season=SEASON2017&api_key=' + riot)
+        games_dave = json.load(json_dave_games)
+        json_nick_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + nick + '/summary?season=SEASON2017&api_key=' + riot)
+        games_nick = json.load(json_nick_games)
+        json_steve_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + steve + '/summary?season=SEASON2017&api_key=' + riot)
+        games_steve = json.load(json_steve_games)
+        time.sleep(11)
+        json_shelby_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + shelby + '/summary?season=SEASON2017&api_key=' + riot)
+        games_shelby = json.load(json_shelby_games)
+        json_wes_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + wes + '/summary?season=SEASON2017&api_key=' + riot)
+        games_wes = json.load(json_wes_games)
+
+        for x in range(0, len(games_matt['playerStatSummaries'])):
+            if games_matt['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_matt = games_matt['playerStatSummaries'][x]['wins']
+                losses_matt = games_matt['playerStatSummaries'][x]['losses']
+                percentage_matt = ((float(wins_matt) / float(wins_matt + losses_matt)) * 100.0)
+        for x in range(0, len(games_jake['playerStatSummaries'])):
+            if games_jake['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_jake = games_jake['playerStatSummaries'][x]['wins']
+                losses_jake = games_jake['playerStatSummaries'][x]['losses']
+                percentage_jake = ((float(wins_jake) / float(wins_jake + losses_jake)) * 100.0)
+        for x in range(0, len(games_jerry['playerStatSummaries'])):
+            if games_jerry['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_jerry = games_jerry['playerStatSummaries'][x]['wins']
+                losses_jerry = games_jerry['playerStatSummaries'][x]['losses']
+                percentage_jerry = ((float(wins) / float(wins + losses)) * 100.0)
+        for x in range(0, len(games_trevor['playerStatSummaries'])):
+            if games_trevor['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_trevor = games_trevor['playerStatSummaries'][x]['wins']
+                losses_trevor = games_trevor['playerStatSummaries'][x]['losses']
+                percentage_trevor = ((float(wins_trevor) / float(wins_trevor + losses_trevor)) * 100.0)
+        for x in range(0, len(games_justin['playerStatSummaries'])):
+            if games_justin['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_justin = games_justin['playerStatSummaries'][x]['wins']
+                losses_justin = games_justin['playerStatSummaries'][x]['losses']
+                percentage_justin = ((float(wins_justin) / float(wins_justin + losses_justin)) * 100.0)
+        for x in range(0, len(games_surat['playerStatSummaries'])):
+            if games_surat['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_surat = games_surat['playerStatSummaries'][x]['wins']
+                losses_surat = games_surat['playerStatSummaries'][x]['losses']
+                percentage_surat = ((float(wins_surat) / float(wins_surat + losses_surat)) * 100.0)
+        for x in range(0, len(games_steve['playerStatSummaries'])):
+            if games_steve['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_steve = games_steve['playerStatSummaries'][x]['wins']
+                losses_steve = games_steve['playerStatSummaries'][x]['losses']
+                percentage_steve = ((float(wins_steve) / float(wins_steve + losses_steve)) * 100.0)
+        for x in range(0, len(games_wes['playerStatSummaries'])):
+            if games_wes['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_wes = games_wes['playerStatSummaries'][x]['wins']
+                losses_wes = games_wes['playerStatSummaries'][x]['losses']
+                percentage_wes = ((float(wins_wes) / float(wins_wes + losses_wes)) * 100.0)
+        for x in range(0, len(games_dave['playerStatSummaries'])):
+            if games_dave['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_dave = games_dave['playerStatSummaries'][x]['wins']
+                losses_dave = games_dave['playerStatSummaries'][x]['losses']
+                percentage_dave = ((float(wins_dave) / float(wins_dave + losses_dave)) * 100.0)
+        for x in range(0, len(games_nick['playerStatSummaries'])):
+            if games_nick['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_nick = games_nick['playerStatSummaries'][x]['wins']
+                losses_nick = games_nick['playerStatSummaries'][x]['losses']
+                percentage_nick = ((float(wins_nick) / float(wins_nick + losses_nick)) * 100.0)
+        for x in range(0, len(games_raf['playerStatSummaries'])):
+            if games_raf['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_raf = games_raf['playerStatSummaries'][x]['wins']
+                losses_raf = games_raf['playerStatSummaries'][x]['losses']
+                percentage_raf = ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
+        for x in range(0, len(games_shelby['playerStatSummaries'])):
+            if games_shelby['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+                wins_shelby = games_shelby['playerStatSummaries'][x]['wins']
+                losses_shelby = games_shelby['playerStatSummaries'][x]['losses']
+                percentage_shelby = ((float(wins_shelby) / float(wins_shelby + losses_shelby)) * 100.0)
+        percentage_list = [('Jerry', percentage_jerry), ('Shelby', percentage_shelby), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt),
+         ('Trevor',percentage_trevor)]
+        sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1])
+        percetnage_leaderboard = ":crown:: " + sorted_percentage_list[0] + "\n" + ":two:: " + sorted_percentage_list[1]
+        
     def write_weather(self, channel_id, zip_code):
         #zip_code = input("Enter your zip code: ")
         json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=' + geocode)

@@ -49,6 +49,8 @@ class RtmEventHandler(object):
                 elif 'weather' in msg_txt:
                     botname, weather, zip_code = msg_txt.split(" ", 2)
                     self.msg_writer.write_weather(event['channel'], zip_code)
+                elif 'leaderboard' in msg_txt:
+                    self.msg_writer.write_leaderboard(event['channel'])
                 elif 'alternative fact' in msg_txt:
                     self.msg_writer.write_alternative_fact(event['channel'])
                 elif 'fact' in msg_txt:
