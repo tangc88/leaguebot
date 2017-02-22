@@ -149,8 +149,8 @@ class Messenger(object):
         json_steve_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + steve + '/summary?season=SEASON2017&api_key=' + riot)
         games_steve = json.load(json_steve_games)
         time.sleep(11)
-        json_shelby_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + shelby + '/summary?season=SEASON2017&api_key=' + riot)
-        games_shelby = json.load(json_shelby_games)
+        # json_shelby_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + shelby + '/summary?season=SEASON2017&api_key=' + riot)
+        # games_shelby = json.load(json_shelby_games)
         json_wes_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + wes + '/summary?season=SEASON2017&api_key=' + riot)
         games_wes = json.load(json_wes_games)
 
@@ -209,16 +209,16 @@ class Messenger(object):
                 wins_raf = games_raf['playerStatSummaries'][x]['wins']
                 losses_raf = games_raf['playerStatSummaries'][x]['losses']
                 percentage_raf = ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
-        for x in range(0, len(games_shelby['playerStatSummaries'])):
-            if games_shelby['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_shelby = games_shelby['playerStatSummaries'][x]['wins']
-                losses_shelby = games_shelby['playerStatSummaries'][x]['losses']
-                percentage_shelby = ((float(wins_shelby) / float(wins_shelby + losses_shelby)) * 100.0)
-        percentage_list = [('Jerry', percentage_jerry), ('Shelby', percentage_shelby), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt),
-         ('Trevor',percentage_trevor)]
+        # for x in range(0, len(games_shelby['playerStatSummaries'])):
+        #     if games_shelby['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_shelby = games_shelby['playerStatSummaries'][x]['wins']
+        #         losses_shelby = games_shelby['playerStatSummaries'][x]['losses']
+        #         percentage_shelby = ((float(wins_shelby) / float(wins_shelby + losses_shelby)) * 100.0)
+        percentage_list = [('Jerry', percentage_jerry), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt), ('Trevor',percentage_trevor)]
         sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1])
         percentage_leaderboard = ":crown:: " + sorted_percentage_list[0] + "\n" + ":two:: " + sorted_percentage_list[1]
         self.send_message(channel_id, percentage_leaderboard)
+        
     def write_weather(self, channel_id, zip_code):
         #zip_code = input("Enter your zip code: ")
         json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=' + geocode)
