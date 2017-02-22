@@ -161,57 +161,77 @@ class Messenger(object):
                 losses_matt = games_matt['playerStatSummaries'][x]['losses']
                 percentage_matt = "%.2f" % ((float(wins_matt) / float(wins_matt + losses_matt)) * 100.0)
                 kills_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_matt = float(kills_total_matt) / float(wins_matt + losses_matt)
+                kills_per_game_matt = "%.2f" % float(kills_total_matt) / float(wins_matt + losses_matt)
         for x in range(0, len(games_jake['playerStatSummaries'])):
             if games_jake['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_jake = games_jake['playerStatSummaries'][x]['wins']
                 losses_jake = games_jake['playerStatSummaries'][x]['losses']
-                percentage_jake = ((float(wins_jake) / float(wins_jake + losses_jake)) * 100.0)
+                percentage_jake = "%.2f" % ((float(wins_jake) / float(wins_jake + losses_jake)) * 100.0)
+                kills_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_jake = "%.2f" % float(kills_total_jake) / float(wins_matt + losses_jake)
         for x in range(0, len(games_jerry['playerStatSummaries'])):
             if games_jerry['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_jerry = games_jerry['playerStatSummaries'][x]['wins']
                 losses_jerry = games_jerry['playerStatSummaries'][x]['losses']
-                percentage_jerry = ((float(wins_jerry) / float(wins_jerry + losses_jerry)) * 100.0)
+                percentage_jerry = "%.2f" % ((float(wins_jerry) / float(wins_jerry + losses_jerry)) * 100.0)
+                kills_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_jerry = "%.2f" % float(kills_total_jerry) / float(wins_jerry + losses_jerry)
         for x in range(0, len(games_trevor['playerStatSummaries'])):
             if games_trevor['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_trevor = games_trevor['playerStatSummaries'][x]['wins']
                 losses_trevor = games_trevor['playerStatSummaries'][x]['losses']
-                percentage_trevor = ((float(wins_trevor) / float(wins_trevor + losses_trevor)) * 100.0)
+                percentage_trevor = "%.2f" % ((float(wins_trevor) / float(wins_trevor + losses_trevor)) * 100.0)
+                kills_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_trevor = "%.2f" % float(kills_total_trevor) / float(wins_trevor + losses_trevor)
         for x in range(0, len(games_justin['playerStatSummaries'])):
             if games_justin['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_justin = games_justin['playerStatSummaries'][x]['wins']
                 losses_justin = games_justin['playerStatSummaries'][x]['losses']
-                percentage_justin = ((float(wins_justin) / float(wins_justin + losses_justin)) * 100.0)
+                percentage_justin = "%.2f" % ((float(wins_justin) / float(wins_justin + losses_justin)) * 100.0)
+                kills_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_justin = "%.2f" % float(kills_total_matt) / float(wins_justin + losses_justin)
         for x in range(0, len(games_surat['playerStatSummaries'])):
             if games_surat['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_surat = games_surat['playerStatSummaries'][x]['wins']
                 losses_surat = games_surat['playerStatSummaries'][x]['losses']
-                percentage_surat = ((float(wins_surat) / float(wins_surat + losses_surat)) * 100.0)
+                percentage_surat = "%.2f" % ((float(wins_surat) / float(wins_surat + losses_surat)) * 100.0)
+                kills_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_surat = "%.2f" % float(kills_total_surat) / float(wins_surat + losses_surat)
         for x in range(0, len(games_steve['playerStatSummaries'])):
             if games_steve['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_steve = games_steve['playerStatSummaries'][x]['wins']
                 losses_steve = games_steve['playerStatSummaries'][x]['losses']
-                percentage_steve = ((float(wins_steve) / float(wins_steve + losses_steve)) * 100.0)
+                percentage_steve = "%.2f" % ((float(wins_steve) / float(wins_steve + losses_steve)) * 100.0)
+                kills_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_steve = "%.2f" % float(kills_total_steve) / float(wins_steve + losses_steve)
         for x in range(0, len(games_wes['playerStatSummaries'])):
             if games_wes['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_wes = games_wes['playerStatSummaries'][x]['wins']
                 losses_wes = games_wes['playerStatSummaries'][x]['losses']
-                percentage_wes = ((float(wins_wes) / float(wins_wes + losses_wes)) * 100.0)
+                percentage_wes = "%.2f" % ((float(wins_wes) / float(wins_wes + losses_wes)) * 100.0)
+                kills_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_wes = "%.2f" % float(kills_total_wes) / float(wins_wes + losses_wes)
         for x in range(0, len(games_dave['playerStatSummaries'])):
             if games_dave['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_dave = games_dave['playerStatSummaries'][x]['wins']
                 losses_dave = games_dave['playerStatSummaries'][x]['losses']
-                percentage_dave = ((float(wins_dave) / float(wins_dave + losses_dave)) * 100.0)
+                percentage_dave = "%.2f" % ((float(wins_dave) / float(wins_dave + losses_dave)) * 100.0)
+                kills_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_dave = "%.2f" % float(kills_total_dave) / float(wins_dave + losses_dave)
         for x in range(0, len(games_nick['playerStatSummaries'])):
             if games_nick['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_nick = games_nick['playerStatSummaries'][x]['wins']
                 losses_nick = games_nick['playerStatSummaries'][x]['losses']
-                percentage_nick = ((float(wins_nick) / float(wins_nick + losses_nick)) * 100.0)
+                percentage_nick = "%.2f" % ((float(wins_nick) / float(wins_nick + losses_nick)) * 100.0)
+                kills_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_nick = "%.2f" % float(kills_total_nick) / float(wins_nick + losses_nick)
         for x in range(0, len(games_raf['playerStatSummaries'])):
             if games_raf['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_raf = games_raf['playerStatSummaries'][x]['wins']
                 losses_raf = games_raf['playerStatSummaries'][x]['losses']
-                percentage_raf = ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
+                percentage_raf = "%.2f" % ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
+                kills_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+                kills_per_game_raf = "%.2f" % float(kills_total_raf) / float(wins_raf + losses_raf)
         ##Shelby isn't ranked
         # for x in range(0, len(games_shelby['playerStatSummaries'])):
         #     if games_shelby['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
@@ -220,7 +240,7 @@ class Messenger(object):
         #         percentage_shelby = ((float(wins_shelby) / float(wins_shelby + losses_shelby)) * 100.0)
         percentage_list = [('Jerry', percentage_jerry), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt, kills_total_matt, kills_per_game_matt), ('Trevor',percentage_trevor)]
         sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1], reverse = True)
-        percentage_leaderboard = "Solo Queue Leaderboard\n:crown:: " + str(sorted_percentage_list[0][0]) + ": " + str(sorted_percentage_list[0][1]) + "%, " + str(sorted_percentage_list[0][2]) + " Total Kills, "+ str(sorted_percentage_list[0][3]) + " Kills/Game" + "\n:two:: " + str(sorted_percentage_list[1][0]) + ": " + str(sorted_percentage_list[1][1]) + "%" + "\n:three:: " + str(sorted_percentage_list[2][0]) + ": " + str(sorted_percentage_list[2][1]) + "%" + "\n:four:: " + str(sorted_percentage_list[3][0]) + ": " + str(sorted_percentage_list[3][1]) + "%" + "\n:five:: " + str(sorted_percentage_list[4][0]) + ": " + str(sorted_percentage_list[4][1]) + "%" + "\n:six:: " + str(sorted_percentage_list[5][0]) + ": " + str(sorted_percentage_list[5][1]) + "%" + "\n:seven:: " + str(sorted_percentage_list[6][0]) + ": " + str(sorted_percentage_list[6][1]) + "%" + "\n:eight:: " + str(sorted_percentage_list[7][0]) + ": " + str(sorted_percentage_list[7][1]) + "%" + "\n:nine:: " + str(sorted_percentage_list[8][0]) + ": " + str(sorted_percentage_list[8][1]) + "%" + "\n:keycap_ten:: " + str(sorted_percentage_list[9][0]) + ": " + str(sorted_percentage_list[9][1]) + "%" + "\n:jakepuss:: " + str(sorted_percentage_list[10][0]) + ": " + str(sorted_percentage_list[10][1]) + "%"
+        percentage_leaderboard = "Solo Queue Leaderboard\n:crown:: " + str(sorted_percentage_list[0][0]) + ": " + str(sorted_percentage_list[0][1]) + "%, " + str(sorted_percentage_list[0][2]) + " Total Kills, "+ str(sorted_percentage_list[0][3]) + " Kills/Game" + "\n:two:: " + str(sorted_percentage_list[1][0]) + ": " + str(sorted_percentage_list[1][1]) + "%, " + str(sorted_percentage_list[1][2]) + " Total Kills, "+ str(sorted_percentage_list[1][3]) + " Kills/Game" + "\n:three:: " + str(sorted_percentage_list[2][0]) + ": " + str(sorted_percentage_list[2][1]) + "%, " + str(sorted_percentage_list[2][2]) + " Total Kills, "+ str(sorted_percentage_list[2][3]) + " Kills/Game" + "\n:four:: " + str(sorted_percentage_list[3][0]) + ": " + str(sorted_percentage_list[3][1]) + "%, " + str(sorted_percentage_list[3][2]) + " Total Kills, "+ str(sorted_percentage_list[3][3]) + " Kills/Game" + "\n:five:: " + str(sorted_percentage_list[4][0]) + ": " + str(sorted_percentage_list[4][1]) + "%, " + str(sorted_percentage_list[4][2]) + " Total Kills, "+ str(sorted_percentage_list[4][3]) + " Kills/Game" + "\n:six:: " + str(sorted_percentage_list[5][0]) + ": " + str(sorted_percentage_list[5][1]) + "%, " + str(sorted_percentage_list[5][2]) + " Total Kills, "+ str(sorted_percentage_list[5][3]) + " Kills/Game" + "\n:seven:: " + str(sorted_percentage_list[6][0]) + ": " + str(sorted_percentage_list[6][1]) + "%, " + str(sorted_percentage_list[6][2]) + " Total Kills, "+ str(sorted_percentage_list[6][3]) + " Kills/Game" + "\n:eight:: " + str(sorted_percentage_list[7][0]) + ": " + str(sorted_percentage_list[7][1]) + "%, " + str(sorted_percentage_list[7][2]) + " Total Kills, "+ str(sorted_percentage_list[7][3]) + " Kills/Game" + "\n:nine:: " + str(sorted_percentage_list[8][0]) + ": " + str(sorted_percentage_list[8][1]) + "%, " + str(sorted_percentage_list[8][2]) + " Total Kills, "+ str(sorted_percentage_list[8][3]) + " Kills/Game" + "\n:keycap_ten:: " + str(sorted_percentage_list[9][0]) + ": " + str(sorted_percentage_list[9][1]) + "%, " + str(sorted_percentage_list[9][2]) + " Total Kills, "+ str(sorted_percentage_list[9][3]) + " Kills/Game" + "\n:jakepuss:: " + str(sorted_percentage_list[10][0]) + ": " + str(sorted_percentage_list[10][1]) + "%, " + str(sorted_percentage_list[10][2]) + " Total Kills, "+ str(sorted_percentage_list[10][3]) + " Kills/Game"
         self.send_message(channel_id, percentage_leaderboard)
 
     def write_weather(self, channel_id, zip_code):
