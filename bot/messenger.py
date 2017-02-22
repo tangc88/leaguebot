@@ -216,7 +216,7 @@ class Messenger(object):
         #         percentage_shelby = ((float(wins_shelby) / float(wins_shelby + losses_shelby)) * 100.0)
         percentage_list = [('Jerry', percentage_jerry), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt), ('Trevor',percentage_trevor)]
         sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1])
-        percentage_leaderboard = ":crown:: " + sorted_percentage_list[0] + "\n" + ":two:: " + sorted_percentage_list[1]
+        percentage_leaderboard = ":crown:: " + str(sorted_percentage_list[0]) + "\n" + ":two:: " + str(sorted_percentage_list[1])
         self.send_message(channel_id, percentage_leaderboard)
 
     def write_weather(self, channel_id, zip_code):
