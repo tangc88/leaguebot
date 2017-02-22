@@ -10,6 +10,8 @@ import os
 
 logger = logging.getLogger(__name__)
 riot = os.environ.get("riot")
+geocode = os.environ.get("geocode")
+dark_sky = os.environ.get("dark_sky")
 matt = '31203597'
 jake = '45556126'
 

@@ -18,5 +18,17 @@ config:
     type: secret
     default: not secret though
     global: true
+  - name: geocode
+    friendly_name: googleapis
+    info: Location
+    type: secret
+    default: not secret though
+    global: true
+  - name: dark_sky
+    friendly_name: Dark Sky API
+    info: Weather
+    type: secret
+    default: not secret though
+    global: true
 screenshots:
   - screenshot: resources/screenshot1.png
