@@ -9,7 +9,8 @@ import urllib2
 import os
 
 logger = logging.getLogger(__name__)
-riot = os.environ.get("riot")
+#riot = os.environ.get("riot")
+riot = 'RGAPI-e3c527f3-1921-4ee8-9d6e-087aa21deb76'
 matt = '31203597'
 jake = '45556126'
 
@@ -53,7 +54,7 @@ class Messenger(object):
         alt_facts = ["Matt only has 9 toes on his feet, his tenth toe is his penis.", "Matt has the ability to suck his own ear.",
             "Matt invented the sport of penis wrestling, he plays alone.", "Matt was once on the path of going pro in LoL, but diabetes derailed his destiny.",
             "Before becoming diabetic, Matt has straight hair."]
-        txt = riot#'{}'.format(random.choice(alt_facts))
+        txt = '{}'.format(random.choice(alt_facts))
         self.send_message(channel_id, txt)
 
     def write_greeting(self, channel_id, user_id):
