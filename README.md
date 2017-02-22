@@ -6,6 +6,8 @@ A simple starting point for creating a Beep Boop hostable, Python based Slack bo
 
 Visit [Beep Boop](https://beepboophq.com/docs/article/overview) to get the scoop on the the Beep Boop hosting platform. The Slack API documentation can be found [here](https://api.slack.com/).
 
+LeagueBot isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.
+
 ## Assumptions
 * You have already signed up with [Beep Boop](https://beepboophq.com) and have a local fork of this project.
 * You have sufficient rights in your Slack team to configure a bot and generate/access a Slack API token.
