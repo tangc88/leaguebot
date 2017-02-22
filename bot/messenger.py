@@ -106,11 +106,11 @@ class Messenger(object):
 
     def write_weather(self, channel_id, zip_code):
         #zip_code = input("Enter your zip code: ")
-        json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=AIzaSyCmnhJXBfU_bi32jVCwbfLeSMEQWU-O68Q')
+        json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=' + geocode)
         location = json.load(json_location)
         lat = location['results'][0]['geometry']['location']['lat']
         lng = location['results'][0]['geometry']['location']['lng']
-        json_weather = urllib2.urlopen('https://api.darksky.net/forecast/9298a272f3fb8da43fabcfbdb5288f0f/' + str(lat) + ',' + str(lng))
+        json_weather = urllib2.urlopen('https://api.darksky.net/forecast/' + dark_sky + '/' + str(lat) + ',' + str(lng))
         weather = json.load(json_weather)
         temperature = weather['currently']['temperature']
         current_temp = "It is currently " + str(temperature) + " degrees fahrenheit."
