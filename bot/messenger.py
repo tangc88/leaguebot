@@ -168,7 +168,7 @@ class Messenger(object):
             if games_jerry['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_jerry = games_jerry['playerStatSummaries'][x]['wins']
                 losses_jerry = games_jerry['playerStatSummaries'][x]['losses']
-                percentage_jerry = ((float(wins) / float(wins + losses)) * 100.0)
+                percentage_jerry = ((float(wins_jerry) / float(wins_jerry + losses_jerry)) * 100.0)
         for x in range(0, len(games_trevor['playerStatSummaries'])):
             if games_trevor['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_trevor = games_trevor['playerStatSummaries'][x]['wins']
