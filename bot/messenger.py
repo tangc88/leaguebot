@@ -210,6 +210,7 @@ class Messenger(object):
                 wins_raf = games_raf['playerStatSummaries'][x]['wins']
                 losses_raf = games_raf['playerStatSummaries'][x]['losses']
                 percentage_raf = ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
+        ##Shelby isn't ranked
         # for x in range(0, len(games_shelby['playerStatSummaries'])):
         #     if games_shelby['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
         #         wins_shelby = games_shelby['playerStatSummaries'][x]['wins']
