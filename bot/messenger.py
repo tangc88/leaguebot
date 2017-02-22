@@ -217,8 +217,8 @@ class Messenger(object):
         percentage_list = [('Jerry', percentage_jerry), ('Shelby', percentage_shelby), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt),
          ('Trevor',percentage_trevor)]
         sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1])
-        percetnage_leaderboard = ":crown:: " + sorted_percentage_list[0] + "\n" + ":two:: " + sorted_percentage_list[1]
-        
+        percentage_leaderboard = ":crown:: " + sorted_percentage_list[0] + "\n" + ":two:: " + sorted_percentage_list[1]
+        self.send_message(channel_id, percentage_leaderboard)
     def write_weather(self, channel_id, zip_code):
         #zip_code = input("Enter your zip code: ")
         json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=' + geocode)
