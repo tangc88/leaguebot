@@ -47,7 +47,6 @@ class Messenger(object):
             'Matt is ' + str(DIFF.days) + ' days old!', 'Matt is a weird guy, but he is fun.', 'His blood type is O-Negative.',
             'He thought "Giraffe" was spelled "Diraffe" until he was 13.']
         txt = '{}'.format(random.choice(facts))
-        random = riot
         self.send_message(channel_id, txt)
 
     def write_alternative_fact(self, channel_id):
