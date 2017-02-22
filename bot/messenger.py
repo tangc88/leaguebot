@@ -139,7 +139,7 @@ class Messenger(object):
         json_justin_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + justin + '/summary?season=SEASON2017&api_key=' + riot)
         games_justin = json.load(json_justin_games)
         json_raf_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + raf + '/summary?season=SEASON2017&api_key=' + riot)
-        games_raf = json.load(json_jake_games)
+        games_raf = json.load(json_raf_games)
         json_surat_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + surat + '/summary?season=SEASON2017&api_key=' + riot)
         games_surat = json.load(json_surat_games)
         json_dave_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + dave + '/summary?season=SEASON2017&api_key=' + riot)
@@ -218,7 +218,7 @@ class Messenger(object):
         sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1])
         percentage_leaderboard = ":crown:: " + sorted_percentage_list[0] + "\n" + ":two:: " + sorted_percentage_list[1]
         self.send_message(channel_id, percentage_leaderboard)
-        
+
     def write_weather(self, channel_id, zip_code):
         #zip_code = input("Enter your zip code: ")
         json_location = urllib2.urlopen('https://maps.googleapis.com/maps/api/geocode/json?address=' + zip_code + '&key=' + geocode)
