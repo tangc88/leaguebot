@@ -26,6 +26,8 @@ shelby = '31118715'
 steve = '530530'
 wes = '47884918'
 
+summoner_id = ['31203597', '45556126', '19139825', '26767760', '32702702', '45496123', '75821827', '532474', '30852265', '31118715', '530530', '47884918']
+
 class Messenger(object):
 
     def __init__(self, slack_clients):
@@ -94,7 +96,7 @@ class Messenger(object):
         question = "Jake's ranked solo win percentage is ..."
         self.send_message(channel_id, question)
         self.clients.send_user_typing_pause(channel_id)
-        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
+        json_games_jake = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + summoner_id[1] + '/summary?season=SEASON2017&api_key=' + riot)
         games_jake = json.load(json_games_jake)
         for x in range(0, len(games_jake['playerStatSummaries'])):
             if games_jake['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
