@@ -304,7 +304,7 @@ class Messenger(object):
         weather = json.load(json_weather)
         temperature = weather['currently']['temperature']
         summary = weather['currently']['summary']
-        current_weather = "It is currently " + str(summary) + " and " + str(temperature) + " degrees fahrenheit."
+        current_weather = "It is currently " + str(temperature) + " degrees fahrenheit with " + str(summary)
         self.send_message(channel_id, current_weather)
 
 
