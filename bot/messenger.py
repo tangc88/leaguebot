@@ -157,6 +157,9 @@ class Messenger(object):
         json_wes_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + wes + '/summary?season=SEASON2017&api_key=' + riot)
         games_wes = json.load(json_wes_games)
 
+        #0:matt, 1:jake, 2:jerry, 3:trevor, 4:dave, 5:justin, 6:nick, 7:raf, 8:surat, 9:steve, 10:wes
+        games = [games_matt, games_jake, games_jerry, games_trevor, games_dave, games_justin, games_nick, games_raf, games_surat, games_steve, games_wes]
+        
         for x in range(0, len(games_matt['playerStatSummaries'])):
             if games_matt['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
                 wins_matt = games_matt['playerStatSummaries'][x]['wins']
