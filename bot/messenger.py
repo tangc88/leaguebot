@@ -129,15 +129,17 @@ class Messenger(object):
         #self.clients.send_user_typing_pause(channel_id)
         #extra_joke_two = "Also has " + str(riven_first_blood) + " first bloods as Riven. :chart_with_downwards_trend:"
         #self.send_message(channel_id, extra_joke_two)
+
     def write_mastery(self, channel_id):
         json_matt_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/NA1/player/' + matt + '/topchampions?count=1&api_key=' + riot)
         matt_champID_json = json.load(json_matt_master)
-        matt_champID = str(matt_champID_json[0]['championId'])
-        matt_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + matt_champID + '?api_key=' + riot)
+        matt_champID = matt_champID_json[0]['championId']
+        matt_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(matt_champID) + '?api_key=' + riot)
         matt_champ_json = json.load(matt_champ_url)
         matt_champ = matt_champ_json['name']
-        message = 'Matt\' top champion is ' + matt_champ
+        message = 'Matt\' top champion is ' + str(matt_champ)
         self.send_message(channel_id, message)
+
     def write_leaderboard(self, channel_id):
         json_matt_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + matt + '/summary?season=SEASON2017&api_key=' + riot)
         games_matt = json.load(json_matt_games)
