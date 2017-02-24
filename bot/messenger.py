@@ -131,9 +131,11 @@ class Messenger(object):
         #self.send_message(channel_id, extra_joke_two)
     def write_mastery(self, channel_id):
         json_matt_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/NA1/player/' + matt + '/topchampions?count=1&api_key=' + riot)
-        matt_champID = json.load(json_matt_master)[0]['championId']
+        matt_champID = json.load(json_matt_master)
+        matt_champID = matt_champID[0]['championId']
         matt_champ_json = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + matt_champID + '?api_key=' + riot)
-        matt_champ = json.load(matt_champ_json)['name']
+        matt_champ = json.load(matt_champ_json)
+        matt_champ = matt_champ['name']
         message = 'Matt\' top champion is ' + matt_champ
         self.send_message(channel_id, message)
     def write_leaderboard(self, channel_id):
