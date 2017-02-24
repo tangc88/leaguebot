@@ -57,6 +57,8 @@ class RtmEventHandler(object):
                     self.msg_writer.write_fact(event['channel'])
                 elif 'rank' in msg_txt:
                     self.msg_writer.write_rank(event['channel'])
+                elif 'mastery' in msg_txt:
+                    self.msg_writer.write_mastery(event['channel'])
                 elif 'attachment' in msg_txt:
                     self.msg_writer.demo_attachment(event['channel'])
                 elif 'echo' in msg_txt:
