@@ -134,10 +134,11 @@ class Messenger(object):
         json_matt_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + matt + '/topchampions?api_key=' + riot)
         matt_champID_json = json.load(json_matt_master)
         matt_champID = matt_champID_json[0]['championId']
+        matt_points = matt_champID_json[0]['championPoints']
         matt_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(matt_champID) + '?api_key=' + riot)
         matt_champ_json = json.load(matt_champ_url)
         matt_champ = matt_champ_json['name']
-        message = 'Matt\'s top champion is ' + str(matt_champ) + "."
+        message = 'Matt\'s top champion is ' + str(matt_champ) + ' with' + matt_points + '.'
         self.send_message(channel_id, message)
 
     def write_leaderboard(self, channel_id):
