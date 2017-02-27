@@ -138,7 +138,7 @@ class Messenger(object):
         matt_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(matt_champID) + '?api_key=' + riot)
         matt_champ_json = json.load(matt_champ_url)
         matt_champ = matt_champ_json['name']
-        message = 'Matt\'s top champion is ' + str(matt_champ) + ' with' + str(matt_points) + '.'
+        message = 'Matt\'s top champion is ' + str(matt_champ) + ' with ' + str(matt_points) + ' points!'
         self.send_message(channel_id, message)
 
     def write_leaderboard(self, channel_id):
