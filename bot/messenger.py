@@ -133,7 +133,7 @@ class Messenger(object):
     def write_mastery(self, channel_id):
         masteries_list = []
         message_list= []
-        message = ''
+        message = '\n'
         i = 0
         json_matt_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + matt + '/topchampions?api_key=' + riot)
         matt_champID_json = json.load(json_matt_master)
@@ -166,7 +166,7 @@ class Messenger(object):
         jerry_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(jerry_champID) + '?api_key=' + riot)
         jerry_champ_json = json.load(jerry_champ_url)
         jerry_champ = jerry_champ_json['name']
-        jerry_message = 'jerry\'s top champion is ' + str(jerry_champ) + ' with ' + str(jerry_points) + ' points!\n'
+        jerry_message = 'Jerry\'s top champion is ' + str(jerry_champ) + ' with ' + str(jerry_points) + ' points!\n'
         masteries_list.append(jerry_points)
         message_list.append(jerry_message)
         time.sleep(3)
@@ -178,7 +178,7 @@ class Messenger(object):
         trevor_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(trevor_champID) + '?api_key=' + riot)
         trevor_champ_json = json.load(trevor_champ_url)
         trevor_champ = trevor_champ_json['name']
-        trevor_message = 'trevor\'s top champion is ' + str(trevor_champ) + ' with ' + str(trevor_points) + ' points!\n'
+        trevor_message = 'Trevor\'s top champion is ' + str(trevor_champ) + ' with ' + str(trevor_points) + ' points!\n'
         masteries_list.append(trevor_points)
         message_list.append(trevor_message)
         time.sleep(3)
@@ -190,7 +190,7 @@ class Messenger(object):
         dave_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(dave_champID) + '?api_key=' + riot)
         dave_champ_json = json.load(dave_champ_url)
         dave_champ = dave_champ_json['name']
-        dave_message = 'dave\'s top champion is ' + str(dave_champ) + ' with ' + str(dave_points) + ' points!\n'
+        dave_message = 'Dave\'s top champion is ' + str(dave_champ) + ' with ' + str(dave_points) + ' points!\n'
         masteries_list.append(dave_points)
         message_list.append(dave_message)
         time.sleep(3)
@@ -202,7 +202,7 @@ class Messenger(object):
         justin_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(justin_champID) + '?api_key=' + riot)
         justin_champ_json = json.load(justin_champ_url)
         justin_champ = justin_champ_json['name']
-        justin_message = 'justin\'s top champion is ' + str(justin_champ) + ' with ' + str(justin_points) + ' points!\n'
+        justin_message = 'Justin\'s top champion is ' + str(justin_champ) + ' with ' + str(justin_points) + ' points!\n'
         masteries_list.append(justin_points)
         message_list.append(justin_message)
         time.sleep(3)
@@ -214,7 +214,7 @@ class Messenger(object):
         nick_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(nick_champID) + '?api_key=' + riot)
         nick_champ_json = json.load(nick_champ_url)
         nick_champ = nick_champ_json['name']
-        nick_message = 'nick\'s top champion is ' + str(nick_champ) + ' with ' + str(nick_points) + ' points!\n'
+        nick_message = 'Nick\'s top champion is ' + str(nick_champ) + ' with ' + str(nick_points) + ' points!\n'
         masteries_list.append(nick_points)
         message_list.append(nick_message)
         time.sleep(3)
@@ -226,7 +226,7 @@ class Messenger(object):
         raf_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(raf_champID) + '?api_key=' + riot)
         raf_champ_json = json.load(raf_champ_url)
         raf_champ = raf_champ_json['name']
-        raf_message = 'raf\'s top champion is ' + str(raf_champ) + ' with ' + str(raf_points) + ' points!\n'
+        raf_message = 'Raf\'s top champion is ' + str(raf_champ) + ' with ' + str(raf_points) + ' points!\n'
         masteries_list.append(raf_points)
         message_list.append(raf_message)
         time.sleep(3)
@@ -238,7 +238,7 @@ class Messenger(object):
         surat_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(surat_champID) + '?api_key=' + riot)
         surat_champ_json = json.load(surat_champ_url)
         surat_champ = surat_champ_json['name']
-        surat_message = 'surat\'s top champion is ' + str(surat_champ) + ' with ' + str(surat_points) + ' points!\n'
+        surat_message = 'Surat\'s top champion is ' + str(surat_champ) + ' with ' + str(surat_points) + ' points!\n'
         masteries_list.append(surat_points)
         message_list.append(surat_message)
         time.sleep(3)
@@ -250,7 +250,7 @@ class Messenger(object):
         steve_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(steve_champID) + '?api_key=' + riot)
         steve_champ_json = json.load(steve_champ_url)
         steve_champ = steve_champ_json['name']
-        steve_message = 'steve\'s top champion is ' + str(steve_champ) + ' with ' + str(steve_points) + ' points!\n'
+        steve_message = 'Steve\'s top champion is ' + str(steve_champ) + ' with ' + str(steve_points) + ' points!\n'
         masteries_list.append(steve_points)
         message_list.append(steve_message)
         time.sleep(3)
@@ -262,7 +262,7 @@ class Messenger(object):
         wes_champ_url = urllib2.urlopen('https://global.api.pvp.net/api/lol/static-data/na/v1.2/champion/' + str(wes_champID) + '?api_key=' + riot)
         wes_champ_json = json.load(wes_champ_url)
         wes_champ = wes_champ_json['name']
-        wes_message = 'wes\'s top champion is ' + str(wes_champ) + ' with ' + str(wes_points) + ' points!\n'
+        wes_message = 'Wes\'s top champion is ' + str(wes_champ) + ' with ' + str(wes_points) + ' points!\n'
         masteries_list.append(wes_points)
         message_list.append(wes_message)
 
