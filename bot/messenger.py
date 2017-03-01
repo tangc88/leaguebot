@@ -145,7 +145,7 @@ class Messenger(object):
         matt_message = 'Matt\'s top champion is ' + str(matt_champ) + ' with ' + str(matt_points) + ' points!\n'
         masteries_list.append(matt_points)
         message_list.append(matt_message)
-        time.sleep(3)
+
 
         json_jake_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + jake + '/topchampions?api_key=' + riot)
         jake_champID_json = json.load(json_jake_master)
@@ -157,7 +157,7 @@ class Messenger(object):
         jake_message = 'Jake\'s top champion is ' + str(jake_champ) + ' with ' + str(jake_points) + ' points!\n'
         masteries_list.append(jake_points)
         message_list.append(jake_message)
-        time.sleep(3)
+
 
         json_jerry_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + jerry + '/topchampions?api_key=' + riot)
         jerry_champID_json = json.load(json_jerry_master)
@@ -169,7 +169,7 @@ class Messenger(object):
         jerry_message = 'Jerry\'s top champion is ' + str(jerry_champ) + ' with ' + str(jerry_points) + ' points!\n'
         masteries_list.append(jerry_points)
         message_list.append(jerry_message)
-        time.sleep(3)
+
 
         json_trevor_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + trevor + '/topchampions?api_key=' + riot)
         trevor_champID_json = json.load(json_trevor_master)
@@ -181,7 +181,7 @@ class Messenger(object):
         trevor_message = 'Trevor\'s top champion is ' + str(trevor_champ) + ' with ' + str(trevor_points) + ' points!\n'
         masteries_list.append(trevor_points)
         message_list.append(trevor_message)
-        time.sleep(3)
+
 
         json_dave_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + dave + '/topchampions?api_key=' + riot)
         dave_champID_json = json.load(json_dave_master)
@@ -193,7 +193,7 @@ class Messenger(object):
         dave_message = 'Dave\'s top champion is ' + str(dave_champ) + ' with ' + str(dave_points) + ' points!\n'
         masteries_list.append(dave_points)
         message_list.append(dave_message)
-        time.sleep(3)
+        time.sleep(11)
 
         json_justin_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + justin + '/topchampions?api_key=' + riot)
         justin_champID_json = json.load(json_justin_master)
@@ -205,7 +205,7 @@ class Messenger(object):
         justin_message = 'Justin\'s top champion is ' + str(justin_champ) + ' with ' + str(justin_points) + ' points!\n'
         masteries_list.append(justin_points)
         message_list.append(justin_message)
-        time.sleep(3)
+    
 
         json_nick_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + nick + '/topchampions?api_key=' + riot)
         nick_champID_json = json.load(json_nick_master)
@@ -217,7 +217,7 @@ class Messenger(object):
         nick_message = 'Nick\'s top champion is ' + str(nick_champ) + ' with ' + str(nick_points) + ' points!\n'
         masteries_list.append(nick_points)
         message_list.append(nick_message)
-        time.sleep(3)
+
 
         json_raf_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + raf + '/topchampions?api_key=' + riot)
         raf_champID_json = json.load(json_raf_master)
@@ -229,7 +229,7 @@ class Messenger(object):
         raf_message = 'Raf\'s top champion is ' + str(raf_champ) + ' with ' + str(raf_points) + ' points!\n'
         masteries_list.append(raf_points)
         message_list.append(raf_message)
-        time.sleep(3)
+
 
         json_surat_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + surat + '/topchampions?api_key=' + riot)
         surat_champID_json = json.load(json_surat_master)
@@ -241,7 +241,7 @@ class Messenger(object):
         surat_message = 'Surat\'s top champion is ' + str(surat_champ) + ' with ' + str(surat_points) + ' points!\n'
         masteries_list.append(surat_points)
         message_list.append(surat_message)
-        time.sleep(3)
+
 
         json_steve_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + steve + '/topchampions?api_key=' + riot)
         steve_champID_json = json.load(json_steve_master)
