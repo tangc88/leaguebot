@@ -142,7 +142,7 @@ class Messenger(object):
         matt_champ_json = json.load(matt_champ_url)
         matt_champ = matt_champ_json['name']
         matt_message = 'Matt\'s top champion is ' + str(matt_champ) + ' with ' + str(matt_points) + ' points!\n'
-        masteries_list.append(mattpoints)
+        masteries_list.append(matt_points)
         message_list.append(matt_message)
 
 
