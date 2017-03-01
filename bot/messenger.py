@@ -268,7 +268,8 @@ class Messenger(object):
         mastery_message_list = list(zip(masteries_list,message_list))
         mastery_message_list = sorted(mastery_message_list, key=lambda x: x[0], reverse=True)
         for x in mastery_message_list:
-            message = message + str(x + 1) +'. ' + x[1]
+            num = x + 1
+            message = message + str(num) +'. ' + x[1]
 
         self.send_message(channel_id, message)
 
