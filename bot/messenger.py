@@ -133,8 +133,8 @@ class Messenger(object):
     def write_mastery(self, channel_id):
         masteries_list = []
         message_list= []
-        message = '\n'
-        i = 0
+        message = 'Mastery leaderboard\n'
+        i = -1
         json_matt_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + matt + '/topchampions?api_key=' + riot)
         matt_champID_json = json.load(json_matt_master)
         matt_champID = matt_champID_json[0]['championId']
@@ -205,7 +205,7 @@ class Messenger(object):
         justin_message = 'Justin\'s top champion is ' + str(justin_champ) + ' with ' + str(justin_points) + ' points!\n'
         masteries_list.append(justin_points)
         message_list.append(justin_message)
-    
+
 
         json_nick_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + nick + '/topchampions?api_key=' + riot)
         nick_champID_json = json.load(json_nick_master)
@@ -268,9 +268,10 @@ class Messenger(object):
 
         mastery_message_list = list(zip(masteries_list,message_list))
         mastery_message_list = sorted(mastery_message_list, key=lambda x: x[0], reverse=True)
+        emoji = [':crown:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':nine:', ':keycap_ten:', ':jakepuss:']
         for x in mastery_message_list:
             i += 1
-            message = message + str(i) +'. ' + x[1]
+            message = message + emoji[i] +': ' + x[1]
 
         self.send_message(channel_id, message)
 
