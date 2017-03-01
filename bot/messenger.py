@@ -134,6 +134,7 @@ class Messenger(object):
         masteries_list = []
         message_list= []
         message = ''
+        i = 0
         json_matt_master = urllib2.urlopen('https://na.api.pvp.net/championmastery/location/NA1/player/' + matt + '/topchampions?api_key=' + riot)
         matt_champID_json = json.load(json_matt_master)
         matt_champID = matt_champID_json[0]['championId']
@@ -268,8 +269,8 @@ class Messenger(object):
         mastery_message_list = list(zip(masteries_list,message_list))
         mastery_message_list = sorted(mastery_message_list, key=lambda x: x[0], reverse=True)
         for x in mastery_message_list:
-            num = x + 1
-            message = message + str(num) +'. ' + x[1]
+            i += 1
+            message = message + str(i) +'. ' + x[1]
 
         self.send_message(channel_id, message)
 
