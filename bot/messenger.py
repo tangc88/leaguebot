@@ -76,10 +76,7 @@ class Messenger(object):
         greetings = ['Hi', 'Hello', 'Nice to meet you', 'Howdy', 'Salutations']
         user_dict = {'@jerry' : jerry}
         user_name = str('<@' + user_id + '>')
-        if user_name in user_dict:
-            txt = "it worked"
-        else:
-            txt = user_name + "no worky"
+        txt = user_dict[user_name]
         #txt = '<@' + user_id + '>' + '{}, <@{}>!'.format(random.choice(greetings), user_id)
         self.send_message(channel_id, txt)
 
