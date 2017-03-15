@@ -74,7 +74,12 @@ class Messenger(object):
 
     def write_greeting(self, channel_id, user_id):
         greetings = ['Hi', 'Hello', 'Nice to meet you', 'Howdy', 'Salutations']
-        txt = '<@' + user_id + '>' + '{}, <@{}>!'.format(random.choice(greetings), user_id)
+        user_dict = {'@jerry' : jerry}
+        if '<@'+user_id+'>' in user_dict:
+            txt = "it worked"
+        else:
+            txt = "no worky"
+        #txt = '<@' + user_id + '>' + '{}, <@{}>!'.format(random.choice(greetings), user_id)
         self.send_message(channel_id, txt)
 
     def write_prompt(self, channel_id):
