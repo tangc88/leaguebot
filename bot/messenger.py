@@ -92,10 +92,10 @@ class Messenger(object):
             division = games[str(user)][0]['entries'][0]['division']
             flex_tier = games[str(user)][1]['tier']
             flex_division = games[str(user)][1]['entries'][0]['division']
-            txt = user_id + "\nSolo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
+            txt = <@user_id> + "\nSolo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
             self.send_message(channel_id, txt)
         else:
-            txt = user_id + "ERROR"
+            txt = "ERROR"
             self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
