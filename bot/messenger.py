@@ -83,7 +83,7 @@ class Messenger(object):
         self.send_message(channel_id, txt)
 
     def write_rank(self, channel_id, user_id):
-        user_dict = {'@jerry' : jerry, '@tdub' : trevor}
+        user_dict = {@jerry : jerry, @tdub : trevor}
         if user_id in user_dict:
             user = user_dict[user_id]
             json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + user + '/entry?api_key=' + riot)
