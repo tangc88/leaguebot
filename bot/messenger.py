@@ -82,15 +82,21 @@ class Messenger(object):
         txt = "I'm so sorry, I didn't quite understand... Can I help you? (e.g. `<@" + bot_uid + "> help`)"
         self.send_message(channel_id, txt)
 
-    def write_rank(self, channel_id):
-        json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + matt + '/entry?api_key=' + riot)
-        games = json.load(json_games)
-        tier = games['31203597'][0]['tier']
-        division = games['31203597'][0]['entries'][0]['division']
-        flex_tier = games['31203597'][1]['tier']
-        flex_division = games['31203597'][1]['entries'][0]['division']
-        txt = "\nSolo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
-        self.send_message(channel_id, txt)
+    def write_rank(self, channel_id, user_id):
+        user_dict = {'@jerry' : jerry, '@tdub' : trevor}
+        if user_id in user_dict:
+            user = user_dict[user_id]
+            json_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v2.5/league/by-summoner/' + user + '/entry?api_key=' + riot)
+            games = json.load(json_games)
+            tier = games[str(user)][0]['tier']
+            division = games[str(user)][0]['entries'][0]['division']
+            flex_tier = games[str(user)][1]['tier']
+            flex_division = games[str(user)][1]['entries'][0]['division']
+            txt = "\nSolo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
+            self.send_message(channel_id, txt)
+        else:
+            txt = "ERROR"
+            self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
         question = "Jake's ranked solo win percentage is ..."
