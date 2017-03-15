@@ -75,7 +75,7 @@ class Messenger(object):
     def write_greeting(self, channel_id, user_id):
         greetings = ['Hi', 'Hello', 'Nice to meet you', 'Howdy', 'Salutations']
         user_dict = {'@jerry' : jerry}
-        user_name = '<@'user_id'>'
+        user_name = '<@' + user_id + '>'
         if user_name in user_dict:
             txt = "it worked"
         else:
