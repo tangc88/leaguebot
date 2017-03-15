@@ -95,7 +95,7 @@ class Messenger(object):
             txt = user_id + "\nSolo Rank: " + tier + " " + division + "\n" + "Flex Rank: " + flex_tier + " " + flex_division
             self.send_message(channel_id, txt)
         else:
-            txt = "ERROR"
+            txt = user_id + "ERROR"
             self.send_message(channel_id, txt)
 
     def write_joke(self, channel_id):
