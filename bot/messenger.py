@@ -75,8 +75,8 @@ class Messenger(object):
     def write_greeting(self, channel_id, user_id):
         greetings = ['Hi', 'Hello', 'Nice to meet you', 'Howdy', 'Salutations']
         user_dict = {'@jerry' : 'booger'}
-        user_name = str('<@' + user_id + '>')
-        txt = user_dict[user_name]
+        user_name = '<@' + user_id + '>'
+        txt = user_dict[str(user_name)]
         #txt = '<@' + user_id + '>' + '{}, <@{}>!'.format(random.choice(greetings), user_id)
         self.send_message(channel_id, txt)
 
