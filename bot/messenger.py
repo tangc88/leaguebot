@@ -278,6 +278,7 @@ class Messenger(object):
         self.send_message(channel_id, message)
 
     def write_leaderboard(self, channel_id):
+        self.clients.send_user_typing_pause(channel_id)
         json_matt_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + matt + '/summary?season=SEASON2017&api_key=' + riot)
         games_matt = json.load(json_matt_games)
         json_jake_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
