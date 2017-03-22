@@ -489,7 +489,7 @@ class Messenger(object):
             match = json.load(json_match)
             i += 1
             while n < 10:
-                if int(person1) == int(match['participantIdentities'][n]['player']['summonerId']):
+                if jerry == int(match['participantIdentities'][n]['player']['summonerId']):
                     person1_id = match['participantIdentities'][n]['participantId']
                     break
                 else:
