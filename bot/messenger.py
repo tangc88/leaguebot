@@ -487,16 +487,15 @@ class Messenger(object):
         while i < 5: #and i < len(common_match_id):
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[i]) + '?api_key=' + riot)
             match = json.load(json_match)
-            i += 1
             while n < 10:
                 if jerry == match['participantIdentities'][n]['player']['summonerId']:
                     person1_id = match['participantIdentities'][n]['participantId']
                     if match['participants'][person1_id - 1]['stats']['winner'] == True:
                         wins += 1
-                    else:
-                        break
                 else:
                     n += 1
+            i += 1
+
         duo_percentage = int(wins/len(common_match_id))
         self.send_message(channel_id, duo_percentage)
 
