@@ -491,7 +491,6 @@ class Messenger(object):
             while n < 10:
                 if jerry == match['participantIdentities'][n]['player']['summonerId']:
                     person1_id = match['participantIdentities'][n]['participantId']
-                    break
                 else:
                     n += 1
             if match['participants'][person1_id - 1]['stats']['winner'] == True:
