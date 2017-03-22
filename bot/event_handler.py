@@ -46,6 +46,8 @@ class RtmEventHandler(object):
                     self.msg_writer.write_greeting(event['channel'], event['user'])
                 elif 'joke' in msg_txt:
                     self.msg_writer.write_joke(event['channel'])
+                elif 'duo' in msg_txt:
+                    botname, duo, person1 = msg_txt.split(" "), person2 = msg_txt.split(" ")
                 elif 'weather' in msg_txt:
                     botname, weather, zip_code = msg_txt.split(" ", 2)
                     self.msg_writer.write_weather(event['channel'], zip_code)

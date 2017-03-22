@@ -473,7 +473,7 @@ class Messenger(object):
         y = 0
         i = 0
         n = 0
-        m = 0
+        wins = 0
         while x < len(person1_match_list['matches']):
             person1_match_id.append(person1_match_list['matches'][x]['matchId'])
             x += 1
@@ -484,18 +484,20 @@ class Messenger(object):
         while i < 10 and i < len(common_match_id):
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[i]) + '?api_key=' + riot)
             match = json.load(json_match)
-        while n < 10:
-            if int(person1) == int(match['participantIdentities'][n]['player']['summonerId']):
-                person1_id = match['participantIdentities'][n]['participantId']
-                break
+            i += 1
+            while n < 10:
+                if int(person1) == int(match['participantIdentities'][n]['player']['summonerId']):
+                    person1_id = match['participantIdentities'][n]['participantId']
+                    break
+                else:
+                    n += 1
+            if match['participants'][person1_id - 1]['stats']['winner'] == True:
+                wins += 1
             else:
-                n += 1
-        while m < 10:
-            if int(person1) == int(match['participantIdentities'][m]['player']['summonerId']):
-                person1_id = match['participantIdentities'][m]['participantId']
                 break
-            else:
-                m += 1
+        duo_percentage = int(wins/len(common_match_id))
+        self.send_message(channel_id, duo_percentage)
+
 
 
     def write_error(self, channel_id, err_msg):
