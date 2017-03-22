@@ -455,6 +455,47 @@ class Messenger(object):
         summary = weather['currently']['summary']
         current_weather = "It is currently " + str(temperature) + " degrees fahrenheit in "+ city + " and the weather is " + str(summary)
         self.send_message(channel_id, current_weather)
+    def common_elements(l1, l2):
+        result = []
+        for element in l1:
+            if element in l2:
+                result.append(element)
+        return result
+
+    def write_duo(self, channel_id, person1, person2):
+        person1_match_id = []
+        person2_match_id = []
+        json_match_list_person1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/'+ str(person1) + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        person1_match_list = json.load(json_match_list_person1)
+        json_match_list_person2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/'+ str(person2) + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        person2_match_list = json.load(json_match_list_person2)
+        x = 0
+        y = 0
+        i = 0
+        n = 0
+        m = 0
+        while x < len(person1_match_list['matches']):
+            person1_match_id.append(person1_match_list['matches'][x]['matchId'])
+            x += 1
+        while y < len(person2_match_list['matches']):
+            person2_match_id.append(person2_match_list['matches'][y]['matchId'])
+            y += 1
+        common_match_id = common_elements(person1_match_id, person2_match_id)
+        while i < 10 and i < len(common_match_id):
+            json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[i]) + '?api_key=' + riot)
+            match = json.load(json_match)
+        while n < 10:
+            if int(person1) == int(match['participantIdentities'][n]['player']['summonerId']):
+                person1_id = match['participantIdentities'][n]['participantId']
+                break
+            else:
+                n += 1
+        while m < 10:
+            if int(person1) == int(match['participantIdentities'][m]['player']['summonerId']):
+                person1_id = match['participantIdentities'][m]['participantId']
+                break
+            else:
+                m += 1
 
 
     def write_error(self, channel_id, err_msg):
