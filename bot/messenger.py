@@ -465,9 +465,9 @@ class Messenger(object):
     def write_duo(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        json_match_list_person1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/'+ str(person1) + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        json_match_list_person1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/'+ person1 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
         person1_match_list = json.load(json_match_list_person1)
-        json_match_list_person2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/'+ str(person2) + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        json_match_list_person2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/'+ person2 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
         person2_match_list = json.load(json_match_list_person2)
         x = 0
         y = 0
