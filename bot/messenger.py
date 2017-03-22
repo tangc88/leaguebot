@@ -455,12 +455,12 @@ class Messenger(object):
         summary = weather['currently']['summary']
         current_weather = "It is currently " + str(temperature) + " degrees fahrenheit in "+ city + " and the weather is " + str(summary)
         self.send_message(channel_id, current_weather)
-    def common_elements(l1, l2):
-        result = []
-        for element in l1:
-            if element in l2:
-                result.append(element)
-        return result
+    # def common_elements(l1, l2):
+    #     result = []
+    #     for element in l1:
+    #         if element in l2:
+    #             result.append(element)
+    #     return result
 
     def write_duo(self, channel_id, person1, person2):
         person1_match_id = []
@@ -480,7 +480,10 @@ class Messenger(object):
         while y < len(person2_match_list['matches']):
             person2_match_id.append(person2_match_list['matches'][y]['matchId'])
             y += 1
-        common_match_id = common_elements(person1_match_id, person2_match_id)
+        common_match_id = []
+        for element in person1_match_id:
+            if element in person2_match_id:
+                common_match_id.append(element)
         while i < 10 and i < len(common_match_id):
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[i]) + '?api_key=' + riot)
             match = json.load(json_match)
