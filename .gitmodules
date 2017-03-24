@@ -1,0 +1,3 @@
+[submodule "mottnode"]
+	path = mottnode
+	url = https://github.com/Twake56/mottnode
