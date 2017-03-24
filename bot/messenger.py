@@ -484,7 +484,7 @@ class Messenger(object):
         for element in person1_match_id:
             if element in person2_match_id:
                 common_match_id.append(element)
-        while i < 5: #and i < len(common_match_id):
+        while i < 1: #and i < len(common_match_id):
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[0]) + '?api_key=' + riot)
             match = json.load(json_match)
             while n < 10:
