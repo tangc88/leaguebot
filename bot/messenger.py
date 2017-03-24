@@ -485,7 +485,7 @@ class Messenger(object):
             if element in person2_match_id:
                 common_match_id.append(element)
         while i < 5: #and i < len(common_match_id):
-            json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[i]) + '?api_key=' + riot)
+            json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_match_id[0]) + '?api_key=' + riot)
             match = json.load(json_match)
             while n < 10:
                 if jerry == match['participantIdentities'][n]['player']['summonerId']:
