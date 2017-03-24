@@ -498,7 +498,8 @@ class Messenger(object):
             m = 0
             n += 1
         duo_percentage = float(person2_wins)/float(person2_wins + person2_losses) * 100.0
-        self.send_message(channel_id, duo_percentage)
+        txt = "Win %: %.2f", % duo_percentage
+        self.send_message(channel_id, txt)
 
 
 
