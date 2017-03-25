@@ -465,7 +465,7 @@ class Messenger(object):
     def write_duo(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        json_match_list_person1 = urllib2.urlopen('http://mottbot.herokuapp.com/db/jerry/data')
+        json_match_list_person1 = urllib2.urlopen('http://mottbot.herokuapp.com/db/' + person1 + '/' + person2)
         person1_match_list = json.load(json_match_list_person1)
         # time.sleep(11)
         # json_match_list_person2 = urllib2.urlopen('http://mottbot.herokuapp.com/db/steve/data')
@@ -476,27 +476,38 @@ class Messenger(object):
         person2_wins = 0
         person2_losses = 0
         list_key = []
-        while x < len(person1_match_list):
-            if str(person1_match_list[x]['matchdata']['queueType']) == 'TEAM_BUILDER_RANKED_SOLO':
-                person1_match_id.append(person1_match_list[x]['matchdata']['matchId'])
-                list_key.append(x)
-                x += 1
-            else:
-                x += 1
-        while n < len(list_key):
-            while m < 10:
-                if int(person1_match_list[int(list_key[n])]['matchdata']['participantIdentities'][m]['player']['summonerId']) == int(steve):
-                    person1_part_id = person1_match_list[int(list_key[n])]['matchdata']['participantIdentities'][m]['participantId'] - 1
-                    if person1_match_list[int(list_key[n])]['matchdata']['participants'][int(person1_part_id)]['stats']['winner'] == True:
-                        person2_wins += 1
-                        m += 10
-                    else:
-                        person2_losses += 1
-                        m += 10
-                else:
-                    m += 1
-            m = 0
-            n += 1
+        participant_id = 0
+        for i in person1_match_list:
+            for j in i['participantIdentities']:
+                if j['player']['summonerId'] is in summoner_id:
+                    participant_id = j['participantId']
+                    break
+            if i['participants'][participant_id - 1]['stats']['winner'] == 'true':
+                person2_wins += 1
+            elif i['participants'][participant_id - 1]['stats']['winner'] == 'false':
+                person2_losses += 1
+
+        # while x < len(person1_match_list):
+        #     if str(person1_match_list[x]['matchdata']['queueType']) == 'TEAM_BUILDER_RANKED_SOLO':
+        #         person1_match_id.append(person1_match_list[x]['matchdata']['matchId'])
+        #         list_key.append(x)
+        #         x += 1
+        #     else:
+        #         x += 1
+        # while n < len(list_key):
+        #     while m < 10:
+        #         if int(person1_match_list[int(list_key[n])]['matchdata']['participantIdentities'][m]['player']['summonerId']) == int(steve):
+        #             person1_part_id = person1_match_list[int(list_key[n])]['matchdata']['participantIdentities'][m]['participantId'] - 1
+        #             if person1_match_list[int(list_key[n])]['matchdata']['participants'][int(person1_part_id)]['stats']['winner'] == True:
+        #                 person2_wins += 1
+        #                 m += 10
+        #             else:
+        #                 person2_losses += 1
+        #                 m += 10
+        #         else:
+        #             m += 1
+        #     m = 0
+        #     n += 1
         duo_percentage = float(person2_wins)/float(person2_wins + person2_losses) * 100.0
         self.send_message(channel_id, duo_percentage)
 
