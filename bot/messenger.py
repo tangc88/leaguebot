@@ -479,7 +479,7 @@ class Messenger(object):
         participant_id = 0
         for i in person1_match_list:
             for j in i['participantIdentities']:
-                if j['player']['summonerId'] is in summoner_id:
+                if j['player']['summonerId'] in summoner_id:
                     participant_id = j['participantId']
                     break
             if i['participants'][participant_id - 1]['stats']['winner'] == 'true':
