@@ -66,6 +66,8 @@ class RtmEventHandler(object):
                     self.msg_writer.demo_attachment(event['channel'])
                 elif 'echo' in msg_txt:
                     self.msg_writer.send_message(event['channel'], msg_txt)
+                elif 'duo' in msg_txt:
+                    self.msg_writer.write_duo(event['channel'],player1,player2)
                 else:
                     self.msg_writer.write_prompt(event['channel'])
 
