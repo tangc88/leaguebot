@@ -470,22 +470,22 @@ class Messenger(object):
         # time.sleep(11)
         # json_match_list_person2 = urllib2.urlopen('http://mottbot.herokuapp.com/db/steve/data')
         # person2_match_list = json.load(json_match_list_person2)
-        x = 0
-        n = 0
-        m = 0
-        person2_wins = 0
-        person2_losses = 0
-        list_key = []
-        participant_id = 0
-        for i in person1_match_list:
-            for j in i['matchdata']['participantIdentities']:
-                if j['player']['summonerId'] in summoner_id:
-                    participant_id = j['participantId']
-                    break
-            if i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == True:
-                person2_wins += 1
-            elif i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == False:
-                person2_losses += 1
+        # x = 0
+        # n = 0
+        # m = 0
+        # person2_wins = 0
+        # person2_losses = 0
+        # list_key = []
+        # participant_id = 0
+        # for i in person1_match_list:
+        #     for j in i['matchdata']['participantIdentities']:
+        #         if j['player']['summonerId'] in summoner_id:
+        #             participant_id = j['participantId']
+        #             break
+        #     if i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == True:
+        #         person2_wins += 1
+        #     elif i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == False:
+        #         person2_losses += 1
 
         # while x < len(person1_match_list):
         #     if str(person1_match_list[x]['matchdata']['queueType']) == 'TEAM_BUILDER_RANKED_SOLO':
@@ -508,7 +508,8 @@ class Messenger(object):
         #             m += 1
         #     m = 0
         #     n += 1
-        duo_percentage = float(person2_wins)/float(person2_wins + person2_losses) * 100.0
+        #duo_percentage = float(person2_wins)/float(person2_wins + person2_losses) * 100.0
+        duo_percentage = person1_match_list['win_percent']
         self.send_message(channel_id, duo_percentage)
 
 
