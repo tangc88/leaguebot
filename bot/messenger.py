@@ -465,8 +465,6 @@ class Messenger(object):
     def write_duo(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        print(str(person1))
-        print(str(person2))
         json_match_list_person1 = urllib2.urlopen('http://mottbot.herokuapp.com/db/trevor/nick') #+ str(person1) + '/' + str(person2))
         person1_match_list = json.load(json_match_list_person1)
         # time.sleep(11)
@@ -480,13 +478,13 @@ class Messenger(object):
         list_key = []
         participant_id = 0
         for i in person1_match_list:
-            for j in i['participantIdentities']:
+            for j in i['matchdata']['participantIdentities']:
                 if j['player']['summonerId'] in summoner_id:
                     participant_id = j['participantId']
                     break
-            if i['participants'][participant_id - 1]['stats']['winner'] == 'true':
+            if i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == True:
                 person2_wins += 1
-            elif i['participants'][participant_id - 1]['stats']['winner'] == 'false':
+            elif i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == False:
                 person2_losses += 1
 
         # while x < len(person1_match_list):
