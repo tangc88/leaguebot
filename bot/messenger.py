@@ -7,6 +7,7 @@ import datetime
 import json
 import urllib2
 import os
+import requests
 
 logger = logging.getLogger(__name__)
 riot = os.environ.get("riot")
@@ -465,8 +466,8 @@ class Messenger(object):
     def write_duo(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        json_match_list_person1 = urllib2.urlopen('http://mottbot.herokuapp.com/db/trevor/nick') #+ str(person1) + '/' + str(person2))
-        person1_match_list = json.load(json_match_list_person1)
+        json_match_list_person1 = requests.get('http://mottbot.herokuapp.com/db/trevor/nick') #+ str(person1) + '/' + str(person2))
+        person1_match_list = json_match_list_person1.json()
         # time.sleep(11)
         # json_match_list_person2 = urllib2.urlopen('http://mottbot.herokuapp.com/db/steve/data')
         # person2_match_list = json.load(json_match_list_person2)
