@@ -465,8 +465,8 @@ class Messenger(object):
     def write_duo(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        print(str(person1'\n'))
-        print(str(person2'\n'))
+        print(str(person1))
+        print(str(person2))
         json_match_list_person1 = urllib2.urlopen('http://mottbot.herokuapp.com/db/' + str(person1) + '/' + str(person2))
         person1_match_list = json.load(json_match_list_person1)
         # time.sleep(11)
