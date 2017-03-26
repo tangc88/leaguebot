@@ -463,7 +463,7 @@ class Messenger(object):
     #             result.append(element)
     #     return result
 
-    def write_duo(self, channel_id, person1, person2):
+    def write_duo(self, channel_id):#, person1, person2):
         person1_match_id = []
         person2_match_id = []
         json_match_list_person1 = requests.get('http://mottbot.herokuapp.com/db/trevor/nick') #+ str(person1) + '/' + str(person2))
