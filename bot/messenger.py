@@ -326,7 +326,7 @@ class Messenger(object):
                 losses_jake = games_jake['playerStatSummaries'][x]['losses']
                 percentage_jake = "%.2f" % ((float(wins_jake) / float(wins_jake + losses_jake)) * 100.0)
                 kills_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_jake = "%.2f" % (float(kills_total_jake) / float(wins_matt + losses_jake))
+                kills_per_game_jake = "%.2f" % (float(kills_total_jake) / float(wins_jake + losses_jake))
                 assists_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
                 assists_per_game_jake = "%.2f" % (float(assists_total_jake)/ float(wins_jake + losses_jake))
                 cs_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
@@ -359,7 +359,7 @@ class Messenger(object):
                 losses_justin = games_justin['playerStatSummaries'][x]['losses']
                 percentage_justin = "%.2f" % ((float(wins_justin) / float(wins_justin + losses_justin)) * 100.0)
                 kills_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_justin = "%.2f" % (float(kills_total_matt) / float(wins_justin + losses_justin))
+                kills_per_game_justin = "%.2f" % (float(kills_total_justin) / float(wins_justin + losses_justin))
                 assists_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
                 assists_per_game_justin = "%.2f" % (float(assists_total_justin)/ float(wins_justin + losses_justin))
                 cs_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
