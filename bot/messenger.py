@@ -475,7 +475,7 @@ class Messenger(object):
         for x in range(len(player2['matches'])):
             player2_matchlist.append(player2['matches'][x]['matchId'])
         common_matches = list(set(player1_matchlist).intersection(player2_matchlist))
-        duo_percentage = common_matches
+        duo_percentage = str(common_matches)
 
         self.send_message(channel_id, duo_percentage)
 
