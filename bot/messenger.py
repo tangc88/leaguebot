@@ -494,7 +494,7 @@ class Messenger(object):
             for i in range(10):
                 if match['participantIdentities'][i]['player']['summonerId'] == p1 or match['participantIdentities'][i]['player']['summonerId'] == p2:
                     p_gameId = match['participantIdentities'][i]['participantId']
-            if match['participants'][x]['stats']['winner'] == True:
+            if match['participants'][p_gameId - 1]['stats']['winner'] == True:
                 wins += 1
         duo_percentage = float(wins)/float(common_matches_length) * 100
         msg = "Win Percent: %d" % duo_percentage
