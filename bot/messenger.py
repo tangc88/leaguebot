@@ -464,11 +464,11 @@ class Messenger(object):
     #     return result
 
     def write_duo(self, channel_id, person1, person2):
-        player1 = person1
-        player2 = person2
-        json_player1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + player1 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        p1 = person1
+        p2 = person2
+        json_player1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + p1 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
         player1 = json.load(json_player1)
-        json_player2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + player2 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        json_player2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + p2 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
         player2 = json.load(json_player2)
         player1_matchlist = []
         player2_matchlist =[]
