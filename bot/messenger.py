@@ -498,7 +498,7 @@ class Messenger(object):
             if match['participants'][p_gameId - 1]['stats']['winner'] == True:
                 wins += 1
         duo_percentage = float(wins)/float(common_matches_length) * 100
-        msg = "Win Percent: %.2f" + "%" % duo_percentage
+        msg = "Win Percent: %.2f\%" % duo_percentage
         self.send_message(channel_id, msg)
 
     def write_error(self, channel_id, err_msg):
