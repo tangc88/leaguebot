@@ -476,15 +476,31 @@ class Messenger(object):
         player2 = json.load(json_player2)
         player1_matchlist = []
         player2_matchlist =[]
+        wins = 0
         for x in range(len(player1['matches'])):
             player1_matchlist.append(player1['matches'][x]['matchId'])
         for x in range(len(player2['matches'])):
             player2_matchlist.append(player2['matches'][x]['matchId'])
         common_matches = list(set(player1_matchlist).intersection(player2_matchlist))
         common_matches_length = len(common_matches)
-        time_amt = common_matches_length * 2
+        time_amt = common_matches_length * 2 + 10
         time_msg = "You have %d games played together, it will around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
+        time.sleep(10)
         self.send_message(channel_id, time_msg)
+        for x in range(common_matches_length):
+            time.sleep(2)
+            json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_matches[x]) + '?api_key=' + riot)
+            match = json.load(json_match)
+            for i in range(10):
+                if match['participantIdentities'][i]['player']['summonerId'] == p1 or match['participantIdentities'][i]['player']['summonerId'] == p2:
+                    p_gameId = match['participantIdentities'][i]['participantId']
+            if match['participants'][x]['stats']['winner'] == True:
+                wins += 1
+        duo_percentage = float(wins)/float(common_matches_length) * 100
+        msg = "Win Percent: %d" % duo_percentage
+        self.send_message(channel_id, msg)
+
+
 
 
 
