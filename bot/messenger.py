@@ -486,8 +486,8 @@ class Messenger(object):
         common_matches_length = len(common_matches)
         time_amt = common_matches_length * 2 + 10
         time_msg = "You have %d games played together, it will take around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
-        time.sleep(10)
         self.send_message(channel_id, time_msg)
+        time.sleep(10)
         for x in range(common_matches_length):
             time.sleep(2)
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_matches[x]) + '?api_key=' + riot)
