@@ -464,53 +464,19 @@ class Messenger(object):
     #     return result
 
     def write_duo(self, channel_id, person1, person2):
-        person1_match_id = []
-        person2_match_id = []
-        json_match_list_person1 = requests.get('http://mottbot.herokuapp.com/db/trevor/nick') #+ str(person1) + '/' + str(person2))
-        person1_match_list = json_match_list_person1.json()
-        # time.sleep(11)
-        # json_match_list_person2 = urllib2.urlopen('http://mottbot.herokuapp.com/db/steve/data')
-        # person2_match_list = json.load(json_match_list_person2)
-        # x = 0
-        # n = 0
-        # m = 0
-        # person2_wins = 0
-        # person2_losses = 0
-        # list_key = []
-        # participant_id = 0
-        # for i in person1_match_list:
-        #     for j in i['matchdata']['participantIdentities']:
-        #         if j['player']['summonerId'] in summoner_id:
-        #             participant_id = j['participantId']
-        #             break
-        #     if i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == True:
-        #         person2_wins += 1
-        #     elif i['matchdata']['participants'][participant_id - 1]['stats']['winner'] == False:
-        #         person2_losses += 1
+        json_player1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + person1 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        player1 = json.load(json_player1)
+        json_player2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + person2 + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
+        player2 = json.load(json_player2)
+        player1_matchlist = []
+        player2_matchlist =[]
+        for x in range(len(player1['matches'])):
+            player1_matchlist.append(player1['matches'][x]['matchId'])
+        for x in range(len(player2['matches'])):
+            player2_matchlist.append(player2['matches'][x]['matchId'])
+        common_matches = list(set(player1_matches).intersection(player2_matchlist))
+        duo_percentage = common_matches
 
-        # while x < len(person1_match_list):
-        #     if str(person1_match_list[x]['matchdata']['queueType']) == 'TEAM_BUILDER_RANKED_SOLO':
-        #         person1_match_id.append(person1_match_list[x]['matchdata']['matchId'])
-        #         list_key.append(x)
-        #         x += 1
-        #     else:
-        #         x += 1
-        # while n < len(list_key):
-        #     while m < 10:
-        #         if int(person1_match_list[int(list_key[n])]['matchdata']['participantIdentities'][m]['player']['summonerId']) == int(steve):
-        #             person1_part_id = person1_match_list[int(list_key[n])]['matchdata']['participantIdentities'][m]['participantId'] - 1
-        #             if person1_match_list[int(list_key[n])]['matchdata']['participants'][int(person1_part_id)]['stats']['winner'] == True:
-        #                 person2_wins += 1
-        #                 m += 10
-        #             else:
-        #                 person2_losses += 1
-        #                 m += 10
-        #         else:
-        #             m += 1
-        #     m = 0
-        #     n += 1
-        #duo_percentage = float(person2_wins)/float(person2_wins + person2_losses) * 100.0
-        duo_percentage = person1_match_list['win_percent']
         self.send_message(channel_id, duo_percentage)
 
 
