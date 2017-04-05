@@ -485,7 +485,7 @@ class Messenger(object):
         common_matches = list(set(player1_matchlist).intersection(player2_matchlist))
         common_matches_length = len(common_matches)
         time_amt = common_matches_length * 2 + 10
-        time_msg = "You have %d games played together, it will around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
+        time_msg = "You have %d games played together, it will take around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
         time.sleep(10)
         self.send_message(channel_id, time_msg)
         for x in range(common_matches_length):
@@ -498,7 +498,7 @@ class Messenger(object):
             if match['participants'][p_gameId - 1]['stats']['winner'] == True:
                 wins += 1
         duo_percentage = float(wins)/float(common_matches_length) * 100
-        msg = "Win Percent: %d" % duo_percentage
+        msg = "Win Percent: %.2f" % duo_percentage
         self.send_message(channel_id, msg)
 
     def write_error(self, channel_id, err_msg):
