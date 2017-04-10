@@ -503,8 +503,6 @@ class Messenger(object):
     def write_duo_db(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        print(str(person1))
-        print(str(person2))
         json_match_list_person1 = requests.get('http://mottbot.herokuapp.com/trevor/dave') #+ str(person1) + '/' + str(person2))
         jsondata = json_match_list_person1.json()
         duo_percentage = jsondata['win_percent']
