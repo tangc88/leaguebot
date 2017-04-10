@@ -507,7 +507,7 @@ class Messenger(object):
         jsondata = json_match_list_person1.json()
         duo_percentage = jsondata['win_percent']
 
-        self.send_message(channel_id,duo_percentage)
+        self.send_message(channel_id,jsondata)
     def write_error(self, channel_id, err_msg):
         txt = ":face_with_head_bandage: my maker didn't handle this error very well:\n>```{}```".format(err_msg)
         self.send_message(channel_id, txt)
