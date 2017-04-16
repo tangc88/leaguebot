@@ -503,11 +503,11 @@ class Messenger(object):
     def write_duo_db(self, channel_id, person1, person2):
         person1_match_id = []
         person2_match_id = []
-        json_match_list_person1 = requests.get('http://mottbot.herokuapp.com/trevor/dave') #+ str(person1) + '/' + str(person2))
-        jsondata = json_match_list_person1.json()
+        json_match_list_person1 = urllib2.urlopen('http://mottbot.herokuapp.com/trevor/dave') #+ str(person1) + '/' + str(person2))
+        jsondata = json.load(json_match_list_person1)
         duo_percentage = jsondata['win_percent']
 
-        self.send_message(channel_id,jsondata)
+        self.send_message(channel_id,duo_percentage)
     def write_error(self, channel_id, err_msg):
         txt = ":face_with_head_bandage: my maker didn't handle this error very well:\n>```{}```".format(err_msg)
         self.send_message(channel_id, txt)
