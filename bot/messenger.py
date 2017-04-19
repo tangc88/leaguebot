@@ -504,7 +504,7 @@ class Messenger(object):
         self.clients.send_user_typing_pause(channel_id)
         person1_match_id = []
         person2_match_id = []
-        json_match_list_person1 = requests.get('http://mottbot.herokuapp.com/trevor/dave') #+ str(person1) + '/' + str(person2))
+        json_match_list_person1 = requests.get('https://mottbot.herokuapp.com/trevor/dave') #+ str(person1) + '/' + str(person2))
         jsondata = json_match_list_person1.json()
         duo_percentage = jsondata['win_percent']
 
