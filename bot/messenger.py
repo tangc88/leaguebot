@@ -301,7 +301,6 @@ class Messenger(object):
         games_nick = json.load(json_nick_games)
         json_steve_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + steve + '/summary?season=SEASON2017&api_key=' + riot)
         games_steve = json.load(json_steve_games)
-        time.sleep(11)
         # json_shelby_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + shelby + '/summary?season=SEASON2017&api_key=' + riot)
         # games_shelby = json.load(json_shelby_games)
         json_wes_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + wes + '/summary?season=SEASON2017&api_key=' + riot)
@@ -487,9 +486,8 @@ class Messenger(object):
         time_amt = common_matches_length * 2 + 10
         time_msg = "You have %d games played together, it will take around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
         self.send_message(channel_id, time_msg)
-        time.sleep(10)
+        time.sleep(1)
         for x in range(common_matches_length):
-            time.sleep(2)
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_matches[x]) + '?api_key=' + riot)
             match = json.load(json_match)
             for i in range(10):
