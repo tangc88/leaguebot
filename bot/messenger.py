@@ -483,11 +483,12 @@ class Messenger(object):
             player2_matchlist.append(player2['matches'][x]['matchId'])
         common_matches = list(set(player1_matchlist).intersection(player2_matchlist))
         common_matches_length = len(common_matches)
-        time_amt = common_matches_length * 2 + 10
+        time_amt = common_matches_length * 2
         time_msg = "You have %d games played together, it will take around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
         self.send_message(channel_id, time_msg)
         time.sleep(1)
         for x in range(common_matches_length):
+            time.sleep(1)
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_matches[x]) + '?api_key=' + riot)
             match = json.load(json_match)
             for i in range(10):
