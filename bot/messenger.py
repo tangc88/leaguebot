@@ -488,7 +488,6 @@ class Messenger(object):
         self.send_message(channel_id, time_msg)
         time.sleep(1)
         for x in range(common_matches_length):
-            time.sleep(1)
             json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_matches[x]) + '?api_key=' + riot)
             match = json.load(json_match)
             for i in range(10):
