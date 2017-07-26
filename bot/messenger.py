@@ -523,9 +523,9 @@ class Messenger(object):
         json_p2Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person2 +'?api_key=' + riot)
         p2Id = json.load(json_p2Id)
         p2 = p2Id['accountId']
-        json_player1 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p1) + '?api_key=' + riot)
+        json_player1 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p1) + '?queue=420&api_key=' + riot)
         player1 = json.load(json_player1)
-        json_player2 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p2) + '?api_key=' + riot)
+        json_player2 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p2) + '?queue=420&api_key=' + riot)
         player2 = json.load(json_player2)
         player1_matchlist = []
         player2_matchlist =[]
