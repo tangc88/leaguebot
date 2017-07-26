@@ -281,166 +281,219 @@ class Messenger(object):
 
     def write_leaderboard(self, channel_id):
         self.clients.send_user_typing_pause(channel_id)
-        json_matt_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + matt + '/summary?season=SEASON2017&api_key=' + riot)
+        json_matt_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + matt + '?api_key=' + riot)
         games_matt = json.load(json_matt_games)
-        json_jake_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jake + '/summary?season=SEASON2017&api_key=' + riot)
+        json_jake_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + jake + '?api_key=' + riot)
         games_jake = json.load(json_jake_games)
-        json_jerry_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + jerry + '/summary?season=SEASON2017&api_key=' + riot)
+        json_jerry_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + jerry + '?api_key=' + riot)
         games_jerry = json.load(json_jerry_games)
-        json_trevor_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + trevor + '/summary?season=SEASON2017&api_key=' + riot)
+        json_trevor_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + trevor + '?api_key=' + riot)
         games_trevor = json.load(json_trevor_games)
-        json_justin_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + justin + '/summary?season=SEASON2017&api_key=' + riot)
+        json_justin_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + justin + '?api_key=' + riot)
         games_justin = json.load(json_justin_games)
-        json_raf_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + raf + '/summary?season=SEASON2017&api_key=' + riot)
+        json_raf_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + raf + '?api_key=' + riot)
         games_raf = json.load(json_raf_games)
-        json_surat_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + surat + '/summary?season=SEASON2017&api_key=' + riot)
+        json_surat_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + surat + '?api_key=' + riot)
         games_surat = json.load(json_surat_games)
-        json_dave_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + dave + '/summary?season=SEASON2017&api_key=' + riot)
+        json_dave_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + dave + '?api_key=' + riot)
         games_dave = json.load(json_dave_games)
-        json_nick_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + nick + '/summary?season=SEASON2017&api_key=' + riot)
+        json_nick_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + nick + '?api_key=' + riot)
         games_nick = json.load(json_nick_games)
-        json_steve_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + steve + '/summary?season=SEASON2017&api_key=' + riot)
+        json_steve_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + steve + '?api_key=' + riot)
         games_steve = json.load(json_steve_games)
         # json_shelby_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + shelby + '/summary?season=SEASON2017&api_key=' + riot)
         # games_shelby = json.load(json_shelby_games)
-        json_wes_games = urllib2.urlopen('https://na.api.pvp.net/api/lol/na/v1.3/stats/by-summoner/' + wes + '/summary?season=SEASON2017&api_key=' + riot)
+        json_wes_games = urllib2.urlopen('https://na1.api.riotgames.com/lol/league/v3/positions/by-summoner/' + wes + '?api_key=' + riot)
         games_wes = json.load(json_wes_games)
 
         #0:matt, 1:jake, 2:jerry, 3:trevor, 4:dave, 5:justin, 6:nick, 7:raf, 8:surat, 9:steve, 10:wes
         games = [games_matt, games_jake, games_jerry, games_trevor, games_dave, games_justin, games_nick, games_raf, games_surat, games_steve, games_wes]
+        a_list = []
+        for x in range(0, len(games)):
+            wins = games[x][0]['wins']
+            losses = games[x][0]['losses']
+            percent = "%.2f" % ((float(wins)/(wins + losses)) * 100)
+        wins_matt = games_matt[0]['wins']
+        losses_matt = games_matt[0]['losses']
+        percentage_matt = "%.2f" % ((float(wins_matt)/(wins_matt + losses_matt)) * 100)
 
-        for x in range(0, len(games_matt['playerStatSummaries'])):
-            if games_matt['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_matt = games_matt['playerStatSummaries'][x]['wins']
-                losses_matt = games_matt['playerStatSummaries'][x]['losses']
-                percentage_matt = "%.2f" % ((float(wins_matt) / float(wins_matt + losses_matt)) * 100.0)
-                kills_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_matt = "%.2f" % (float(kills_total_matt) / float(wins_matt + losses_matt))
-                assists_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_matt = "%.2f" % (float(assists_total_matt)/ float(wins_matt + losses_matt))
-                cs_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_matt = "%.2f" % (float(cs_total_matt) / float(wins_matt + losses_matt))
-        for x in range(0, len(games_jake['playerStatSummaries'])):
-            if games_jake['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_jake = games_jake['playerStatSummaries'][x]['wins']
-                losses_jake = games_jake['playerStatSummaries'][x]['losses']
-                percentage_jake = "%.2f" % ((float(wins_jake) / float(wins_jake + losses_jake)) * 100.0)
-                kills_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_jake = "%.2f" % (float(kills_total_jake) / float(wins_jake + losses_jake))
-                assists_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_jake = "%.2f" % (float(assists_total_jake)/ float(wins_jake + losses_jake))
-                cs_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_jake = "%.2f" % (float(cs_total_jake) / float(wins_jake + losses_jake))
-        for x in range(0, len(games_jerry['playerStatSummaries'])):
-            if games_jerry['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_jerry = games_jerry['playerStatSummaries'][x]['wins']
-                losses_jerry = games_jerry['playerStatSummaries'][x]['losses']
-                percentage_jerry = "%.2f" % ((float(wins_jerry) / float(wins_jerry + losses_jerry)) * 100.0)
-                kills_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_jerry = "%.2f" % (float(kills_total_jerry) / float(wins_jerry + losses_jerry))
-                assists_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_jerry = "%.2f" % (float(assists_total_jerry)/ float(wins_jerry + losses_jerry))
-                cs_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_jerry = "%.2f" % (float(cs_total_jerry) / float(wins_jerry + losses_jerry))
-        for x in range(0, len(games_trevor['playerStatSummaries'])):
-            if games_trevor['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_trevor = games_trevor['playerStatSummaries'][x]['wins']
-                losses_trevor = games_trevor['playerStatSummaries'][x]['losses']
-                percentage_trevor = "%.2f" % ((float(wins_trevor) / float(wins_trevor + losses_trevor)) * 100.0)
-                kills_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_trevor = "%.2f" % (float(kills_total_trevor) / float(wins_trevor + losses_trevor))
-                assists_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_trevor = "%.2f" % (float(assists_total_trevor)/ float(wins_trevor + losses_trevor))
-                cs_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_trevor = "%.2f" % (float(cs_total_trevor) / float(wins_trevor + losses_trevor))
-        for x in range(0, len(games_justin['playerStatSummaries'])):
-            if games_justin['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_justin = games_justin['playerStatSummaries'][x]['wins']
-                losses_justin = games_justin['playerStatSummaries'][x]['losses']
-                percentage_justin = "%.2f" % ((float(wins_justin) / float(wins_justin + losses_justin)) * 100.0)
-                kills_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_justin = "%.2f" % (float(kills_total_justin) / float(wins_justin + losses_justin))
-                assists_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_justin = "%.2f" % (float(assists_total_justin)/ float(wins_justin + losses_justin))
-                cs_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_justin = "%.2f" % (float(cs_total_justin) / float(wins_justin + losses_justin))
-        for x in range(0, len(games_surat['playerStatSummaries'])):
-            if games_surat['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_surat = games_surat['playerStatSummaries'][x]['wins']
-                losses_surat = games_surat['playerStatSummaries'][x]['losses']
-                percentage_surat = "%.2f" % ((float(wins_surat) / float(wins_surat + losses_surat)) * 100.0)
-                kills_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_surat = "%.2f" % (float(kills_total_surat) / float(wins_surat + losses_surat))
-                assists_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_surat = "%.2f" % (float(assists_total_surat)/ float(wins_surat + losses_surat))
-                cs_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_surat = "%.2f" % (float(cs_total_surat) / float(wins_surat + losses_surat))
-        for x in range(0, len(games_steve['playerStatSummaries'])):
-            if games_steve['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_steve = games_steve['playerStatSummaries'][x]['wins']
-                losses_steve = games_steve['playerStatSummaries'][x]['losses']
-                percentage_steve = "%.2f" % ((float(wins_steve) / float(wins_steve + losses_steve)) * 100.0)
-                kills_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_steve = "%.2f" % (float(kills_total_steve) / float(wins_steve + losses_steve))
-                assists_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_steve = "%.2f" % (float(assists_total_steve)/ float(wins_steve + losses_steve))
-                cs_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_steve = "%.2f" % (float(cs_total_steve) / float(wins_steve + losses_steve))
-        for x in range(0, len(games_wes['playerStatSummaries'])):
-            if games_wes['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_wes = games_wes['playerStatSummaries'][x]['wins']
-                losses_wes = games_wes['playerStatSummaries'][x]['losses']
-                percentage_wes = "%.2f" % ((float(wins_wes) / float(wins_wes + losses_wes)) * 100.0)
-                kills_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_wes = "%.2f" % (float(kills_total_wes) / float(wins_wes + losses_wes))
-                assists_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_wes = "%.2f" % (float(assists_total_wes)/ float(wins_wes + losses_wes))
-                cs_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_wes = "%.2f" % (float(cs_total_wes) / float(wins_wes + losses_wes))
-        for x in range(0, len(games_dave['playerStatSummaries'])):
-            if games_dave['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_dave = games_dave['playerStatSummaries'][x]['wins']
-                losses_dave = games_dave['playerStatSummaries'][x]['losses']
-                percentage_dave = "%.2f" % ((float(wins_dave) / float(wins_dave + losses_dave)) * 100.0)
-                kills_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_dave = "%.2f" % (float(kills_total_dave) / float(wins_dave + losses_dave))
-                assists_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_dave = "%.2f" % (float(assists_total_dave)/ float(wins_dave + losses_dave))
-                cs_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_dave = "%.2f" % (float(cs_total_dave) / float(wins_dave + losses_dave))
-        for x in range(0, len(games_nick['playerStatSummaries'])):
-            if games_nick['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_nick = games_nick['playerStatSummaries'][x]['wins']
-                losses_nick = games_nick['playerStatSummaries'][x]['losses']
-                percentage_nick = "%.2f" % ((float(wins_nick) / float(wins_nick + losses_nick)) * 100.0)
-                kills_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_nick = "%.2f" % (float(kills_total_nick) / float(wins_nick + losses_nick))
-                assists_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_nick = "%.2f" % (float(assists_total_nick)/ float(wins_nick + losses_nick))
-                cs_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_nick = "%.2f" % (float(cs_total_nick) / float(wins_nick + losses_nick))
-        for x in range(0, len(games_raf['playerStatSummaries'])):
-            if games_raf['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
-                wins_raf = games_raf['playerStatSummaries'][x]['wins']
-                losses_raf = games_raf['playerStatSummaries'][x]['losses']
-                percentage_raf = "%.2f" % ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
-                kills_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
-                kills_per_game_raf = "%.2f" % (float(kills_total_raf) / float(wins_raf + losses_raf))
-                assists_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
-                assists_per_game_raf = "%.2f" % (float(assists_total_raf)/ float(wins_raf + losses_raf))
-                cs_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
-                cs_per_game_raf = "%.2f" % (float(cs_total_raf) / float(wins_raf + losses_raf))
+        wins_jake = games_jake[0]['wins']
+        losses_jake = games_jake[0]['losses']
+        percentage_jake = "%.2f" % ((float(wins_jake)/(wins_jake + losses_jake)) * 100)
+
+        wins_jerry = games_jerry[0]['wins']
+        losses_jerry = games_jerry[0]['losses']
+        percentage_jerry = "%.2f" % ((float(wins_jerry)/(wins_jerry + losses_jerry)) * 100)
+
+        wins_trevor = games_trevor[0]['wins']
+        losses_trevor = games_trevor[0]['losses']
+        percentage_trevor = "%.2f" % ((float(wins_trevor)/(wins_trevor + losses_trevor)) * 100)
+
+        wins_dave = games_dave[0]['wins']
+        losses_dave = games_dave[0]['losses']
+        percentage_dave = "%.2f" % ((float(wins_dave)/(wins_dave + losses_dave)) * 100)
+
+        wins_justin = games_justin[0]['wins']
+        losses_justin = games_justin[0]['losses']
+        percentage_justin = "%.2f" % ((float(wins_justin)/(wins_justin + losses_justin)) * 100)
+
+        wins_nick = games_nick[0]['wins']
+        losses_nick = games_nick[0]['losses']
+        percentage_nick = "%.2f" % ((float(wins_nick)/(wins_nick + losses_nick)) * 100)
+
+        wins_raf = games_raf[0]['wins']
+        losses_raf = games_raf[0]['losses']
+        percentage_raf = "%.2f" % ((float(wins_raf)/(wins_raf + losses_raf)) * 100)
+
+        wins_surat = games_surat[0]['wins']
+        losses_surat = games_surat[0]['losses']
+        percentage_surat = "%.2f" % ((float(wins_surat)/(wins_surat + losses_surat)) * 100)
+
+        wins_steve = games_steve[0]['wins']
+        losses_steve = games_steve[0]['losses']
+        percentage_steve = "%.2f" % ((float(wins_steve)/(wins_steve + losses_steve)) * 100)
+
+        wins_wes = games_wes[0]['wins']
+        losses_wes = games_wes[0]['losses']
+        percentage_wes = "%.2f" % ((float(wins_wes)/(wins_wes + losses_wes)) * 100)
+
+        # for x in range(0, len(games_matt['playerStatSummaries'])):
+        #     if games_matt['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_matt = games_matt['playerStatSummaries'][x]['wins']
+        #         losses_matt = games_matt['playerStatSummaries'][x]['losses']
+        #         percentage_matt = "%.2f" % ((float(wins_matt) / float(wins_matt + losses_matt)) * 100.0)
+        #         kills_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_matt = "%.2f" % (float(kills_total_matt) / float(wins_matt + losses_matt))
+        #         assists_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_matt = "%.2f" % (float(assists_total_matt)/ float(wins_matt + losses_matt))
+        #         cs_total_matt = games_matt['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_matt = "%.2f" % (float(cs_total_matt) / float(wins_matt + losses_matt))
+        # for x in range(0, len(games_jake['playerStatSummaries'])):
+        #     if games_jake['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_jake = games_jake['playerStatSummaries'][x]['wins']
+        #         losses_jake = games_jake['playerStatSummaries'][x]['losses']
+        #         percentage_jake = "%.2f" % ((float(wins_jake) / float(wins_jake + losses_jake)) * 100.0)
+        #         kills_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_jake = "%.2f" % (float(kills_total_jake) / float(wins_jake + losses_jake))
+        #         assists_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_jake = "%.2f" % (float(assists_total_jake)/ float(wins_jake + losses_jake))
+        #         cs_total_jake = games_jake['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_jake = "%.2f" % (float(cs_total_jake) / float(wins_jake + losses_jake))
+        # for x in range(0, len(games_jerry['playerStatSummaries'])):
+        #     if games_jerry['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_jerry = games_jerry['playerStatSummaries'][x]['wins']
+        #         losses_jerry = games_jerry['playerStatSummaries'][x]['losses']
+        #         percentage_jerry = "%.2f" % ((float(wins_jerry) / float(wins_jerry + losses_jerry)) * 100.0)
+        #         kills_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_jerry = "%.2f" % (float(kills_total_jerry) / float(wins_jerry + losses_jerry))
+        #         assists_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_jerry = "%.2f" % (float(assists_total_jerry)/ float(wins_jerry + losses_jerry))
+        #         cs_total_jerry = games_jerry['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_jerry = "%.2f" % (float(cs_total_jerry) / float(wins_jerry + losses_jerry))
+        # for x in range(0, len(games_trevor['playerStatSummaries'])):
+        #     if games_trevor['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_trevor = games_trevor['playerStatSummaries'][x]['wins']
+        #         losses_trevor = games_trevor['playerStatSummaries'][x]['losses']
+        #         percentage_trevor = "%.2f" % ((float(wins_trevor) / float(wins_trevor + losses_trevor)) * 100.0)
+        #         kills_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_trevor = "%.2f" % (float(kills_total_trevor) / float(wins_trevor + losses_trevor))
+        #         assists_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_trevor = "%.2f" % (float(assists_total_trevor)/ float(wins_trevor + losses_trevor))
+        #         cs_total_trevor = games_trevor['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_trevor = "%.2f" % (float(cs_total_trevor) / float(wins_trevor + losses_trevor))
+        # for x in range(0, len(games_justin['playerStatSummaries'])):
+        #     if games_justin['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_justin = games_justin['playerStatSummaries'][x]['wins']
+        #         losses_justin = games_justin['playerStatSummaries'][x]['losses']
+        #         percentage_justin = "%.2f" % ((float(wins_justin) / float(wins_justin + losses_justin)) * 100.0)
+        #         kills_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_justin = "%.2f" % (float(kills_total_justin) / float(wins_justin + losses_justin))
+        #         assists_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_justin = "%.2f" % (float(assists_total_justin)/ float(wins_justin + losses_justin))
+        #         cs_total_justin = games_justin['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_justin = "%.2f" % (float(cs_total_justin) / float(wins_justin + losses_justin))
+        # for x in range(0, len(games_surat['playerStatSummaries'])):
+        #     if games_surat['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_surat = games_surat['playerStatSummaries'][x]['wins']
+        #         losses_surat = games_surat['playerStatSummaries'][x]['losses']
+        #         percentage_surat = "%.2f" % ((float(wins_surat) / float(wins_surat + losses_surat)) * 100.0)
+        #         kills_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_surat = "%.2f" % (float(kills_total_surat) / float(wins_surat + losses_surat))
+        #         assists_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_surat = "%.2f" % (float(assists_total_surat)/ float(wins_surat + losses_surat))
+        #         cs_total_surat = games_surat['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_surat = "%.2f" % (float(cs_total_surat) / float(wins_surat + losses_surat))
+        # for x in range(0, len(games_steve['playerStatSummaries'])):
+        #     if games_steve['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_steve = games_steve['playerStatSummaries'][x]['wins']
+        #         losses_steve = games_steve['playerStatSummaries'][x]['losses']
+        #         percentage_steve = "%.2f" % ((float(wins_steve) / float(wins_steve + losses_steve)) * 100.0)
+        #         kills_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_steve = "%.2f" % (float(kills_total_steve) / float(wins_steve + losses_steve))
+        #         assists_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_steve = "%.2f" % (float(assists_total_steve)/ float(wins_steve + losses_steve))
+        #         cs_total_steve = games_steve['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_steve = "%.2f" % (float(cs_total_steve) / float(wins_steve + losses_steve))
+        # for x in range(0, len(games_wes['playerStatSummaries'])):
+        #     if games_wes['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_wes = games_wes['playerStatSummaries'][x]['wins']
+        #         losses_wes = games_wes['playerStatSummaries'][x]['losses']
+        #         percentage_wes = "%.2f" % ((float(wins_wes) / float(wins_wes + losses_wes)) * 100.0)
+        #         kills_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_wes = "%.2f" % (float(kills_total_wes) / float(wins_wes + losses_wes))
+        #         assists_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_wes = "%.2f" % (float(assists_total_wes)/ float(wins_wes + losses_wes))
+        #         cs_total_wes = games_wes['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_wes = "%.2f" % (float(cs_total_wes) / float(wins_wes + losses_wes))
+        # for x in range(0, len(games_dave['playerStatSummaries'])):
+        #     if games_dave['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_dave = games_dave['playerStatSummaries'][x]['wins']
+        #         losses_dave = games_dave['playerStatSummaries'][x]['losses']
+        #         percentage_dave = "%.2f" % ((float(wins_dave) / float(wins_dave + losses_dave)) * 100.0)
+        #         kills_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_dave = "%.2f" % (float(kills_total_dave) / float(wins_dave + losses_dave))
+        #         assists_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_dave = "%.2f" % (float(assists_total_dave)/ float(wins_dave + losses_dave))
+        #         cs_total_dave = games_dave['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_dave = "%.2f" % (float(cs_total_dave) / float(wins_dave + losses_dave))
+        # for x in range(0, len(games_nick['playerStatSummaries'])):
+        #     if games_nick['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_nick = games_nick['playerStatSummaries'][x]['wins']
+        #         losses_nick = games_nick['playerStatSummaries'][x]['losses']
+        #         percentage_nick = "%.2f" % ((float(wins_nick) / float(wins_nick + losses_nick)) * 100.0)
+        #         kills_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_nick = "%.2f" % (float(kills_total_nick) / float(wins_nick + losses_nick))
+        #         assists_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_nick = "%.2f" % (float(assists_total_nick)/ float(wins_nick + losses_nick))
+        #         cs_total_nick = games_nick['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_nick = "%.2f" % (float(cs_total_nick) / float(wins_nick + losses_nick))
+        # for x in range(0, len(games_raf['playerStatSummaries'])):
+        #     if games_raf['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
+        #         wins_raf = games_raf['playerStatSummaries'][x]['wins']
+        #         losses_raf = games_raf['playerStatSummaries'][x]['losses']
+        #         percentage_raf = "%.2f" % ((float(wins_raf) / float(wins_raf + losses_raf)) * 100.0)
+        #         kills_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalChampionKills']
+        #         kills_per_game_raf = "%.2f" % (float(kills_total_raf) / float(wins_raf + losses_raf))
+        #         assists_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalAssists']
+        #         assists_per_game_raf = "%.2f" % (float(assists_total_raf)/ float(wins_raf + losses_raf))
+        #         cs_total_raf = games_raf['playerStatSummaries'][x]['aggregatedStats']['totalMinionKills']
+        #         cs_per_game_raf = "%.2f" % (float(cs_total_raf) / float(wins_raf + losses_raf))
         ##Shelby isn't ranked
         # for x in range(0, len(games_shelby['playerStatSummaries'])):
         #     if games_shelby['playerStatSummaries'][x]['playerStatSummaryType'] == 'RankedSolo5x5':
         #         wins_shelby = games_shelby['playerStatSummaries'][x]['wins']
         #         losses_shelby = games_shelby['playerStatSummaries'][x]['losses']
         #         percentage_shelby = ((float(wins_shelby) / float(wins_shelby + losses_shelby)) * 100.0)
-        percentage_list = [('Jerry', percentage_jerry, kills_total_jerry, kills_per_game_jerry, assists_per_game_jerry, cs_per_game_jerry), ('Raf', percentage_raf, kills_total_raf, kills_per_game_raf, assists_per_game_raf, cs_per_game_raf), ('Nick', percentage_nick, kills_total_nick, kills_per_game_nick, assists_per_game_nick, cs_per_game_nick), ('Dave', percentage_dave, kills_total_dave, kills_per_game_dave, assists_per_game_dave, cs_per_game_dave), ('Wes', percentage_wes, kills_total_wes, kills_per_game_wes, assists_per_game_wes, cs_per_game_wes), ('Steve', percentage_steve, kills_total_steve, kills_per_game_steve, assists_per_game_steve, cs_per_game_steve), ('Surat', percentage_surat, kills_total_surat, kills_per_game_surat, assists_per_game_surat, cs_per_game_surat), ('Justin', percentage_justin, kills_total_justin, kills_per_game_justin, assists_per_game_justin, cs_per_game_justin), ('Jake', percentage_jake, kills_total_jake, kills_per_game_jake, assists_per_game_jake, cs_per_game_jake), ('Matt', percentage_matt, kills_total_matt, kills_per_game_matt, assists_per_game_matt, cs_per_game_matt), ('Trevor',percentage_trevor, kills_total_trevor, kills_per_game_trevor, assists_per_game_trevor, cs_per_game_trevor)]
+        # percentage_list = [('Jerry', percentage_jerry, kills_total_jerry, kills_per_game_jerry, assists_per_game_jerry, cs_per_game_jerry), ('Raf', percentage_raf, kills_total_raf, kills_per_game_raf, assists_per_game_raf, cs_per_game_raf), ('Nick', percentage_nick, kills_total_nick, kills_per_game_nick, assists_per_game_nick, cs_per_game_nick), ('Dave', percentage_dave, kills_total_dave, kills_per_game_dave, assists_per_game_dave, cs_per_game_dave), ('Wes', percentage_wes, kills_total_wes, kills_per_game_wes, assists_per_game_wes, cs_per_game_wes), ('Steve', percentage_steve, kills_total_steve, kills_per_game_steve, assists_per_game_steve, cs_per_game_steve), ('Surat', percentage_surat, kills_total_surat, kills_per_game_surat, assists_per_game_surat, cs_per_game_surat), ('Justin', percentage_justin, kills_total_justin, kills_per_game_justin, assists_per_game_justin, cs_per_game_justin), ('Jake', percentage_jake, kills_total_jake, kills_per_game_jake, assists_per_game_jake, cs_per_game_jake), ('Matt', percentage_matt, kills_total_matt, kills_per_game_matt, assists_per_game_matt, cs_per_game_matt), ('Trevor',percentage_trevor, kills_total_trevor, kills_per_game_trevor, assists_per_game_trevor, cs_per_game_trevor)]
+        # sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1], reverse = True)
+
+        percentage_list = [('Jerry', percentage_jerry), ('Raf', percentage_raf), ('Nick', percentage_nick), ('Dave', percentage_dave), ('Wes', percentage_wes), ('Steve', percentage_steve), ('Surat', percentage_surat), ('Justin', percentage_justin), ('Jake', percentage_jake), ('Matt', percentage_matt), ('Trevor',percentage_trevor)]
         sorted_percentage_list = sorted(percentage_list, key = lambda percents:percents[1], reverse = True)
         emoji = [':crown:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':nine:', ':keycap_ten:', ':jakepuss:']
-        #percentage_leaderboard = "Solo Queue Leaderboard\n" + emoji
-        percentage_leaderboard = "Solo Queue Leaderboard\n:crown:: " + str(sorted_percentage_list[0][0]) + ": " + str(sorted_percentage_list[0][1]) + "%, " + str(sorted_percentage_list[0][2]) + " Kills, "+ str(sorted_percentage_list[0][3]) + " K/G, " + str(sorted_percentage_list[0][4]) + " A/G, " + str(sorted_percentage_list[0][5]) + " CS/G" + "\n:two:: " + str(sorted_percentage_list[1][0]) + ": " + str(sorted_percentage_list[1][1]) + "%, " + str(sorted_percentage_list[1][2]) + " Kills, "+ str(sorted_percentage_list[1][3]) + " K/G, " + str(sorted_percentage_list[1][4]) + " A/G, " + str(sorted_percentage_list[1][5]) + " CS/G" + "\n:three:: " + str(sorted_percentage_list[2][0]) + ": " + str(sorted_percentage_list[2][1]) + "%, " + str(sorted_percentage_list[2][2]) + " Kills, "+ str(sorted_percentage_list[2][3]) + " K/G, " + str(sorted_percentage_list[2][4]) + " A/G, " + str(sorted_percentage_list[2][5]) + " CS/G" + "\n:four:: " + str(sorted_percentage_list[3][0]) + ": " + str(sorted_percentage_list[3][1]) + "%, " + str(sorted_percentage_list[3][2]) + " Kills, "+ str(sorted_percentage_list[3][3]) + " K/G, " + str(sorted_percentage_list[3][4]) + " A/G, " + str(sorted_percentage_list[3][5]) + " CS/G" + "\n:five:: " + str(sorted_percentage_list[4][0]) + ": " + str(sorted_percentage_list[4][1]) + "%, " + str(sorted_percentage_list[4][2]) + " Kills, "+ str(sorted_percentage_list[4][3]) + " K/G, " + str(sorted_percentage_list[4][4]) + " A/G, " + str(sorted_percentage_list[4][5]) + " CS/G" + "\n:six:: " + str(sorted_percentage_list[5][0]) + ": " + str(sorted_percentage_list[5][1]) + "%, " + str(sorted_percentage_list[5][2]) + " Kills, "+ str(sorted_percentage_list[5][3]) + " K/G, " + str(sorted_percentage_list[5][4]) + " A/G, " + str(sorted_percentage_list[5][5]) + " CS/G" + "\n:seven:: " + str(sorted_percentage_list[6][0]) + ": " + str(sorted_percentage_list[6][1]) + "%, " + str(sorted_percentage_list[6][2]) + " Kills, "+ str(sorted_percentage_list[6][3]) + " K/G, " + str(sorted_percentage_list[6][4]) + " A/G, " + str(sorted_percentage_list[6][5]) + " CS/G" + "\n:eight:: " + str(sorted_percentage_list[7][0]) + ": " + str(sorted_percentage_list[7][1]) + "%, " + str(sorted_percentage_list[7][2]) + " Kills, "+ str(sorted_percentage_list[7][3]) + " K/G, " + str(sorted_percentage_list[7][4]) + " A/G, " + str(sorted_percentage_list[7][5]) + " CS/G" + "\n:nine:: " + str(sorted_percentage_list[8][0]) + ": " + str(sorted_percentage_list[8][1]) + "%, " + str(sorted_percentage_list[8][2]) + " Kills, "+ str(sorted_percentage_list[8][3]) + " K/G, " + str(sorted_percentage_list[8][4]) + " A/G, " + str(sorted_percentage_list[8][5]) + " CS/G" + "\n:keycap_ten:: " + str(sorted_percentage_list[9][0]) + ": " + str(sorted_percentage_list[9][1]) + "%, " + str(sorted_percentage_list[9][2]) + " Kills, "+ str(sorted_percentage_list[9][3]) + " K/G, " + str(sorted_percentage_list[9][4]) + " A/G, " + str(sorted_percentage_list[9][5]) + " CS/G" + "\n:jakepuss:: " + str(sorted_percentage_list[10][0]) + ": " + str(sorted_percentage_list[10][1]) + "%, " + str(sorted_percentage_list[10][2]) + " Kills, "+ str(sorted_percentage_list[10][3]) + " K/G, " + str(sorted_percentage_list[10][4]) + " A/G, " + str(sorted_percentage_list[10][5]) + " CS/G"
+        # percentage_leaderboard = "Solo Queue Leaderboard\n" + emoji
+        # percentage_leaderboard = "Solo Queue Leaderboard\n:crown:: " + str(sorted_percentage_list[0][0]) + ": " + str(sorted_percentage_list[0][1]) + "%, " + str(sorted_percentage_list[0][2]) + " Kills, "+ str(sorted_percentage_list[0][3]) + " K/G, " + str(sorted_percentage_list[0][4]) + " A/G, " + str(sorted_percentage_list[0][5]) + " CS/G" + "\n:two:: " + str(sorted_percentage_list[1][0]) + ": " + str(sorted_percentage_list[1][1]) + "%, " + str(sorted_percentage_list[1][2]) + " Kills, "+ str(sorted_percentage_list[1][3]) + " K/G, " + str(sorted_percentage_list[1][4]) + " A/G, " + str(sorted_percentage_list[1][5]) + " CS/G" + "\n:three:: " + str(sorted_percentage_list[2][0]) + ": " + str(sorted_percentage_list[2][1]) + "%, " + str(sorted_percentage_list[2][2]) + " Kills, "+ str(sorted_percentage_list[2][3]) + " K/G, " + str(sorted_percentage_list[2][4]) + " A/G, " + str(sorted_percentage_list[2][5]) + " CS/G" + "\n:four:: " + str(sorted_percentage_list[3][0]) + ": " + str(sorted_percentage_list[3][1]) + "%, " + str(sorted_percentage_list[3][2]) + " Kills, "+ str(sorted_percentage_list[3][3]) + " K/G, " + str(sorted_percentage_list[3][4]) + " A/G, " + str(sorted_percentage_list[3][5]) + " CS/G" + "\n:five:: " + str(sorted_percentage_list[4][0]) + ": " + str(sorted_percentage_list[4][1]) + "%, " + str(sorted_percentage_list[4][2]) + " Kills, "+ str(sorted_percentage_list[4][3]) + " K/G, " + str(sorted_percentage_list[4][4]) + " A/G, " + str(sorted_percentage_list[4][5]) + " CS/G" + "\n:six:: " + str(sorted_percentage_list[5][0]) + ": " + str(sorted_percentage_list[5][1]) + "%, " + str(sorted_percentage_list[5][2]) + " Kills, "+ str(sorted_percentage_list[5][3]) + " K/G, " + str(sorted_percentage_list[5][4]) + " A/G, " + str(sorted_percentage_list[5][5]) + " CS/G" + "\n:seven:: " + str(sorted_percentage_list[6][0]) + ": " + str(sorted_percentage_list[6][1]) + "%, " + str(sorted_percentage_list[6][2]) + " Kills, "+ str(sorted_percentage_list[6][3]) + " K/G, " + str(sorted_percentage_list[6][4]) + " A/G, " + str(sorted_percentage_list[6][5]) + " CS/G" + "\n:eight:: " + str(sorted_percentage_list[7][0]) + ": " + str(sorted_percentage_list[7][1]) + "%, " + str(sorted_percentage_list[7][2]) + " Kills, "+ str(sorted_percentage_list[7][3]) + " K/G, " + str(sorted_percentage_list[7][4]) + " A/G, " + str(sorted_percentage_list[7][5]) + " CS/G" + "\n:nine:: " + str(sorted_percentage_list[8][0]) + ": " + str(sorted_percentage_list[8][1]) + "%, " + str(sorted_percentage_list[8][2]) + " Kills, "+ str(sorted_percentage_list[8][3]) + " K/G, " + str(sorted_percentage_list[8][4]) + " A/G, " + str(sorted_percentage_list[8][5]) + " CS/G" + "\n:keycap_ten:: " + str(sorted_percentage_list[9][0]) + ": " + str(sorted_percentage_list[9][1]) + "%, " + str(sorted_percentage_list[9][2]) + " Kills, "+ str(sorted_percentage_list[9][3]) + " K/G, " + str(sorted_percentage_list[9][4]) + " A/G, " + str(sorted_percentage_list[9][5]) + " CS/G" + "\n:jakepuss:: " + str(sorted_percentage_list[10][0]) + ": " + str(sorted_percentage_list[10][1]) + "%, " + str(sorted_percentage_list[10][2]) + " Kills, "+ str(sorted_percentage_list[10][3]) + " K/G, " + str(sorted_percentage_list[10][4]) + " A/G, " + str(sorted_percentage_list[10][5]) + " CS/G"
+
+        percentage_leaderboard = "Solo Queue Leaderboard\n:crown:: " + str(sorted_percentage_list[0][0]) + ": " + str(sorted_percentage_list[0][1]) + "%" + "\n:two:: " + str(sorted_percentage_list[1][0]) + ": " + str(sorted_percentage_list[1][1]) + "%" + "\n:three:: " + str(sorted_percentage_list[2][0]) + ": " + str(sorted_percentage_list[2][1]) + "%" + "\n:four:: " + str(sorted_percentage_list[3][0]) + ": " + str(sorted_percentage_list[3][1]) + "%" + "\n:five:: " str(sorted_percentage_list[4][0]) + ": " + str(sorted_percentage_list[4][1]) + "%" + "\n:six:: " + str(sorted_percentage_list[5][0]) + ": " + str(sorted_percentage_list[5][1]) + "%" + "\n:seven:: " + str(sorted_percentage_list[6][0]) + ": " + str(sorted_percentage_list[6][1]) + "%" + "\n:eight:: " + str(sorted_percentage_list[7][0]) + ": " + str(sorted_percentage_list[7][1]) + "%" + "\n:nine:: " + str(sorted_percentage_list[8][0]) + ": " + str(sorted_percentage_list[8][1]) + "%" + "\n:keycap_ten:: " + str(sorted_percentage_list[9][0]) + ": " + str(sorted_percentage_list[9][1]) + "%" "\n:jakepuss:: " + str(sorted_percentage_list[10][0]) + ": " + str(sorted_percentage_list[10][1]) + "%"
         self.send_message(channel_id, percentage_leaderboard)
 
     def write_weather(self, channel_id, zip_code):
