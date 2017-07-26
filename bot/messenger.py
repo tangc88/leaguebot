@@ -517,12 +517,12 @@ class Messenger(object):
     #     return result
 
     def write_duo(self, channel_id, person1, person2):
-        json_p1Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person1 +'?api_key=' + riot)
+        json_p1Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person1 + '?api_key=' + riot)
         p1Id = json.load(json_p1Id)
-        p1 = p1Id['id']
+        p1 = p1Id['accountId']
         json_p2Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person2 +'?api_key=' + riot)
         p2Id = json.load(json_p2Id)
-        p2 = p2Id['id']
+        p2 = p2Id['accountId']
         json_player1 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + str(p1) + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
         player1 = json.load(json_player1)
         json_player2 = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/matchlist/by-summoner/' + str(p2) + '?rankedQueues=TEAM_BUILDER_RANKED_SOLO&api_key=' + riot)
@@ -531,9 +531,9 @@ class Messenger(object):
         player2_matchlist =[]
         wins = 0
         for x in range(len(player1['matches'])):
-            player1_matchlist.append(player1['matches'][x]['matchId'])
+            player1_matchlist.append(player1['matches'][x]['gameId'])
         for x in range(len(player2['matches'])):
-            player2_matchlist.append(player2['matches'][x]['matchId'])
+            player2_matchlist.append(player2['matches'][x]['gameId'])
         common_matches = list(set(player1_matchlist).intersection(player2_matchlist))
         common_matches_length = len(common_matches)
         time_amt = common_matches_length * 2
@@ -541,12 +541,12 @@ class Messenger(object):
         self.send_message(channel_id, time_msg)
         time.sleep(1)
         for x in range(common_matches_length):
-            json_match = urllib2.urlopen('https://na.api.riotgames.com/api/lol/NA/v2.2/match/' + str(common_matches[x]) + '?api_key=' + riot)
+            json_match = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matches/' + str(common_matches[x]) + '?api_key='+ riot)
             match = json.load(json_match)
             for i in range(10):
-                if match['participantIdentities'][i]['player']['summonerId'] == p1 or match['participantIdentities'][i]['player']['summonerId'] == p2:
+                if match['participantIdentities'][i]['player']['accountId'] == p1 or match['participantIdentities'][i]['player']['accountId'] == p2:
                     p_gameId = match['participantIdentities'][i]['participantId']
-            if match['participants'][p_gameId - 1]['stats']['winner'] == True:
+            if match['participants'][p_gameId - 1]['stats']['win'] == True:
                 wins += 1
         duo_percentage = float(wins)/float(common_matches_length) * 100
         msg = "Win Percent: %.2f%%" % duo_percentage
