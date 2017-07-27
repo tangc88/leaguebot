@@ -580,6 +580,7 @@ class Messenger(object):
             player3_matchlist.append(player3['matches'][x]['gameId'])
         common_matches = list(set(player1_matchlist) & set(player2_matchlist) & set(player3_matchlist))
         common_matches_length = len(common_matches)
+        print common_matches
         time_amt = common_matches_length * 2
         time_msg = "You have %d games played together, it will take around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
         self.send_message(channel_id, time_msg)
@@ -595,7 +596,7 @@ class Messenger(object):
         duo_percentage = float(wins)/float(common_matches_length) * 100
         msg = "Win Percent: %.2f%%" % duo_percentage
         self.send_message(channel_id, msg)
-        
+
     def write_duo_db(self, channel_id, person1, person2):
         self.clients.send_user_typing_pause(channel_id)
         person1_match_id = []
