@@ -47,7 +47,7 @@ class RtmEventHandler(object):
                     self.msg_writer.write_trio(event['channel'], person1, person2, person3)
                 elif '5s' in msg_txt:
                     botname, duo, person1, person2, person3, person4, person5 = msg_txt.split(" ")
-                    self.msg_writer.write_trio(event['channel'], person1, person2, person3, person4, person5)
+                    self.msg_writer.write_5s(event['channel'], person1, person2, person3, person4, person5)
                 elif re.search('hi|hey|hello|howdy', msg_txt):
                     self.msg_writer.write_greeting(event['channel'], event['user'])
                 elif 'joke' in msg_txt:
