@@ -48,14 +48,13 @@ class Messenger(object):
             "I'm your friendly Slack bot written in Python.  I'll *_respond_* to the following commands:",
             "> `hi <@" + bot_uid + ">` - I'll respond with a randomized greeting mentioning your user. :wave:",
             "> `<@" + bot_uid + "> joke` - I'll tell you one of my finest jokes, with a typing pause for effect. :laughing:",
-            "> `<@" + bot_uid + "> attachment` - I'll demo a post with an attachment using the Web API. :paperclip:",
             "> `<@" + bot_uid + "> fact` - I'll give you a great fact about Matt! :mott:",
             "> `<@" + bot_uid + "> alternative fact` - I'll give you a great alternative fact about Matt! :mottball:",
             "> `<@" + bot_uid + "> rank` - I'll give you Matt's sad League ranking. :frowning:",
             "> `<@" + bot_uid + "> weather (zip code)` - I'll tell you the current temperature for that zip code! :thermometer:",
             "> `<@" + bot_uid + "> leaderboard` - I'll show you where you rank among us! :trophy:"
             "> `<@" + bot_uid + "> duo (summoner name) (summoner name)` - I'll give you your duo win percentage!",
-            "> `<@" + bot_uid + "> trio (summoner name) (summoner name) (summoner name)` - I'll give you your trio win percentage!")
+            "> `<@" + bot_uid + "> trio (summoner name) (summoner name) (summoner name)` - I'll give you your trio win percentage!",)
         self.send_message(channel_id, txt)
 
     def write_fact(self, channel_id):
