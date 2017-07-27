@@ -551,6 +551,51 @@ class Messenger(object):
         duo_percentage = float(wins)/float(common_matches_length) * 100
         msg = "Win Percent: %.2f%%" % duo_percentage
         self.send_message(channel_id, msg)
+
+    def write_trio(self, channel_id, person1, person2, person3):
+        json_p1Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person1 + '?api_key=' + riot)
+        p1Id = json.load(json_p1Id)
+        p1 = p1Id['accountId']
+        json_p2Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person2 +'?api_key=' + riot)
+        p2Id = json.load(json_p2Id)
+        p2 = p2Id['accountId']
+        json_p3Id = urllib2.urlopen('https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/' + person3 + '?api_key=' + riot)
+        p3Id = json.load(json_p3Id)
+        p3 = p3Id['accountId']
+        json_player1 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p1) + '?queue=440&api_key=' + riot)
+        player1 = json.load(json_player1)
+        json_player2 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p2) + '?queue=440&api_key=' + riot)
+        player2 = json.load(json_player2)
+        json_player3 = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/' + str(p3) + '?queue=440&api_key=' + riot)
+        player3 = json.load(json_player3)
+        player1_matchlist = []
+        player2_matchlist =[]
+        player3_matchlist = []
+        wins = 0
+        for x in range(len(player1['matches'])):
+            player1_matchlist.append(player1['matches'][x]['gameId'])
+        for x in range(len(player2['matches'])):
+            player2_matchlist.append(player2['matches'][x]['gameId'])
+        for x in range(len(player3['matches'])):
+            player3_matchlist.append(player3['matches'][x]['gameId'])
+        common_matches = list(set(player1_matchlist) & set(player2_matchlist) & set(player3_matchlist))
+        common_matches_length = len(common_matches)
+        time_amt = common_matches_length * 2
+        time_msg = "You have %d games played together, it will take around %d seconds to figure out your win percentage." % (common_matches_length, time_amt)
+        self.send_message(channel_id, time_msg)
+        time.sleep(1)
+        for x in range(common_matches_length):
+            json_match = urllib2.urlopen('https://na1.api.riotgames.com/lol/match/v3/matches/' + str(common_matches[x]) + '?api_key='+ riot)
+            match = json.load(json_match)
+            for i in range(10):
+                if match['participantIdentities'][i]['player']['accountId'] == p1 or match['participantIdentities'][i]['player']['accountId'] == p2 or match['participantIdentities'][i]['player']['accountId'] == p3:
+                    p_gameId = match['participantIdentities'][i]['participantId']
+            if match['participants'][p_gameId - 1]['stats']['win'] == True:
+                wins += 1
+        duo_percentage = float(wins)/float(common_matches_length) * 100
+        msg = "Win Percent: %.2f%%" % duo_percentage
+        self.send_message(channel_id, msg)
+        
     def write_duo_db(self, channel_id, person1, person2):
         self.clients.send_user_typing_pause(channel_id)
         person1_match_id = []
