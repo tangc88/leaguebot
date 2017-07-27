@@ -42,6 +42,9 @@ class RtmEventHandler(object):
                 # e.g. user typed: "@pybot tell me a joke!"
                 if 'help' in msg_txt:
                     self.msg_writer.write_help_message(event['channel'])
+                elif 'trio' in msg_txt:
+                    botname, duo, person1, person2, person3 = msg_txt.split(" ")
+                    self.msg_writer.write_trio(event['channel'], person1, person2, person3)
                 elif re.search('hi|hey|hello|howdy', msg_txt):
                     self.msg_writer.write_greeting(event['channel'], event['user'])
                 elif 'joke' in msg_txt:
@@ -49,9 +52,6 @@ class RtmEventHandler(object):
                 elif 'duo' in msg_txt:
                     botname, duo, person1, person2 = msg_txt.split(" ")
                     self.msg_writer.write_duo(event['channel'], person1, person2)
-                elif 'trio' in msg_txt:
-                    botname, duo, person1, person2, person3 = msg_txt.split(" ")
-                    self.msg_writer.write_trio(event['channel'], person1, person2, person3)
                 elif 'db' in msg_txt:
                     botname, db, person1, person2 = msg_txt.split(" ")
                     self.msg_writer.write_duo_db(event['channel'], person1, person2)
